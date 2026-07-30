@@ -215,79 +215,7 @@ function validateStep(stepIndex){
 
 }
 
-/*==============================
-    FORM SUBMIT
-==============================*/
 
-form.addEventListener("submit",(e)=>{
-
-    e.preventDefault();
-
-    if(validateStep(currentStep)){
-
-        submitRegistration();
-
-    }
-
-});
-/*==================================================
-    PROFILE PICTURE PREVIEW
-==================================================*/
-
-const profileInput = document.getElementById("profilePicture");
-const previewImage = document.getElementById("previewImage");
-const reviewProfile = document.getElementById("reviewProfile");
-
-if(profileInput){
-
-    profileInput.addEventListener("change",function(){
-
-        const file = this.files[0];
-
-        if(!file) return;
-
-        const reader = new FileReader();
-
-        reader.onload=function(e){
-
-            previewImage.src=e.target.result;
-
-            if(reviewProfile){
-
-                reviewProfile.src=e.target.result;
-
-            }
-
-            localStorage.setItem(
-                "cp_profile_image",
-                e.target.result
-            );
-
-        };
-
-        reader.readAsDataURL(file);
-
-    });
-
-}
-
-/*==================================================
-    RESTORE PROFILE IMAGE
-==================================================*/
-
-const savedImage = localStorage.getItem("cp_profile_image");
-
-if(savedImage){
-
-    previewImage.src=savedImage;
-
-    if(reviewProfile){
-
-        reviewProfile.src=savedImage;
-
-    }
-
-}
 
 /*==================================================
     AUTO AGE
@@ -632,12 +560,11 @@ function buildFormData(){
         timestamp:new Date().toISOString(),
 
         /* PERSONAL */
+firstName: getValue('[name="first_name"]'),
 
-        firstName:getValue('input[placeholder="Juan"]'),
+middleName: getValue('[name="middle_name"]'),
 
-        middleName:getValue('input[placeholder="Santos"]'),
-
-        lastName:getValue('input[placeholder="Dela Cruz"]'),
+lastName: getValue('[name="last_name"]'),
 
         birthday:birthday.value,
 
@@ -707,28 +634,6 @@ function buildFormData(){
 
 }
 
-/*==================================================
-    GOOGLE APPS SCRIPT
-==================================================*/
-
-async function submitRegistration(){
-
-    const data=buildFormData();
-
-    console.log(data);
-
-    /*
-    ===========================================
-    Replace CONFIG.API_URL with your Apps Script
-    ===========================================
-
-    Example:
-
-    https://script.google.com/macros/s/XXXXXXXXXXXX/exec
-
-    */
-
-}
 /*==================================================
     SUBMIT TO GOOGLE APPS SCRIPT
 ==================================================*/
@@ -802,13 +707,6 @@ function registrationSuccess(){
 
     showStep(currentStep);
 
-    previewImage.src="images/default-avatar.png";
-
-    if(reviewProfile){
-
-        reviewProfile.src="images/default-avatar.png";
-
-    }
 
     selectedPrice.innerHTML=
     "Please select a membership plan.";
@@ -859,14 +757,7 @@ function resetRegistration(){
 
     form.reset();
 
-    previewImage.src="images/default-avatar.png";
-
-    if(reviewProfile){
-
-        reviewProfile.src="images/default-avatar.png";
-
-    }
-
+   
     currentStep=0;
 
     showStep(currentStep);
@@ -971,31 +862,7 @@ document.querySelectorAll('input[type="email"]').forEach(input=>{
 
 });
 
-/*==================================================
-    IMAGE SIZE VALIDATION
-==================================================*/
 
-if(profileInput){
-
-    profileInput.addEventListener("change",()=>{
-
-        const file=profileInput.files[0];
-
-        if(!file) return;
-
-        if(file.size>5*1024*1024){
-
-            alert("Maximum image size is 5MB.");
-
-            profileInput.value="";
-
-            previewImage.src="images/default-avatar.png";
-
-        }
-
-    });
-
-}
 
 /*==================================================
     DEBUG

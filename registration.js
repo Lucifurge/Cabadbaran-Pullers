@@ -556,83 +556,52 @@ nextButtons.forEach(button=>{
 
 function buildFormData(){
 
-    return{
+  return {
 
-        timestamp:new Date().toISOString(),
+    timestamp: new Date().toISOString(),
 
-        /* PERSONAL */
-firstName: getValue('[name="first_name"]'),
+    /* PERSONAL */
+    FirstName: getValue('[name="first_name"]'),
+    MiddleName: getValue('[name="middle_name"]'),
+    LastName: getValue('[name="last_name"]'),
 
-middleName: getValue('[name="middle_name"]'),
+    Birthday: birthday.value,
+    Age: age.value,
+    Gender: document.querySelectorAll("select")[0].value,
+    Email: getValue('input[type="email"]'),
+    Phone: getValue('input[type="tel"]'),
+    Facebook: getValue('input[type="url"]'),
+    Address: document.querySelectorAll("textarea")[0].value,
 
-lastName: getValue('[name="last_name"]'),
+    /* EMERGENCY */
+    EmergencyName: getValue('[name="emergency_name"]'),
+    Relationship: getValue('[name="relationship"]'),
+    EmergencyPhone: getValue('[name="emergency_phone"]'),
+    BloodType: getValue('[name="blood_type"]'),
+    EmergencyAddress: getValue('[name="emergency_address"]'),
+    MedicalConditions: getValue('[name="medical_conditions"]'),
+    Allergies: getValue('[name="allergies"]'),
+    EmergencyNotes: getValue('[name="emergency_notes"]'),
 
-        birthday:birthday.value,
+    /* ARM WRESTLING */
+    ExperienceLevel: getValue('[name="experience_level"]'),
+    DominantHand: getValue('[name="dominant_hand"]'),
+    CompetitionArm: getValue('[name="competition_arm"]'),
+    Weight: getValue('[name="weight"]'),
+    Height: getValue('[name="height"]'),
+    WeightClass: getValue('[name="weight_class"]'),
+    Club: getValue('[name="club"]'),
+    YearsExperience: getValue('[name="years"]'),
+    Competitions: getValue('[name="competitions"]'),
+    Achievements: getValue('[name="achievements"]'),
+    Motivation: getValue('[name="motivation"]'),
 
-        age:age.value,
+    /* MEMBERSHIP */
+    Membership: getChecked("membership"),
+    PaymentStatus: "Pending",
+    ApplicationStatus: "Pending"
 
-        gender:document.querySelectorAll("select")[0].value,
-
-        email:getValue('input[type="email"]'),
-
-        phone:getValue('input[type="tel"]'),
-
-        facebook:getValue('input[type="url"]'),
-
-        address:document.querySelectorAll("textarea")[0].value,
-
-        /* EMERGENCY */
-
-        emergencyName:getValue('[name="emergency_name"]'),
-
-        relationship:getValue('[name="relationship"]'),
-
-        emergencyPhone:getValue('[name="emergency_phone"]'),
-
-        bloodType:getValue('[name="blood_type"]'),
-
-        emergencyAddress:getValue('[name="emergency_address"]'),
-
-        medicalConditions:getValue('[name="medical_conditions"]'),
-
-        allergies:getValue('[name="allergies"]'),
-
-        emergencyNotes:getValue('[name="emergency_notes"]'),
-
-        /* ARM WRESTLING */
-
-        experience:getValue('[name="experience_level"]'),
-
-        dominantHand:getValue('[name="dominant_hand"]'),
-
-        competitionArm:getValue('[name="competition_arm"]'),
-
-        weight:getValue('[name="weight"]'),
-
-        height:getValue('[name="height"]'),
-
-        weightClass:getValue('[name="weight_class"]'),
-
-        club:getValue('[name="club"]'),
-
-        yearsExperience:getValue('[name="years"]'),
-
-        competitions:getValue('[name="competitions"]'),
-
-        achievements:getValue('[name="achievements"]'),
-
-        motivation:getValue('[name="motivation"]'),
-
-        /* MEMBERSHIP */
-
-        membership:getChecked("membership"),
-
-        paymentStatus:"Pending",
-
-        applicationStatus:"Pending"
-
-    };
-
+};
 }
 
 /*==================================================

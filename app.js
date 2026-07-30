@@ -3,6 +3,7 @@
     Official Website JavaScript
 ==================================================*/
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
     initStickyHeader();
@@ -18,24 +19,30 @@ document.addEventListener("DOMContentLoaded", () => {
     initRippleEffect();
     initHeroParallax();
     initActiveNavigation();
+    initShirtSlider();
 
 });
+
+
 
 /*==================================================
     STICKY HEADER
 ==================================================*/
 
-function initStickyHeader() {
+function initStickyHeader(){
 
     const header = document.querySelector(".header");
 
-    window.addEventListener("scroll", () => {
+    if(!header) return;
 
-        if (window.scrollY > 60) {
+
+    window.addEventListener("scroll",()=>{
+
+        if(window.scrollY > 60){
 
             header.classList.add("sticky");
 
-        } else {
+        }else{
 
             header.classList.remove("sticky");
 
@@ -45,27 +52,33 @@ function initStickyHeader() {
 
 }
 
+
+
 /*==================================================
     MOBILE MENU
 ==================================================*/
 
-function initMobileMenu() {
+function initMobileMenu(){
 
     const button = document.querySelector(".menu-toggle");
     const nav = document.querySelector("nav");
 
-    if (!button || !nav) return;
 
-    button.addEventListener("click", () => {
+    if(!button || !nav) return;
+
+
+    button.addEventListener("click",()=>{
 
         nav.classList.toggle("active");
         button.classList.toggle("active");
 
     });
 
-    document.querySelectorAll("nav a").forEach(link => {
 
-        link.addEventListener("click", () => {
+
+    document.querySelectorAll("nav a").forEach(link=>{
+
+        link.addEventListener("click",()=>{
 
             nav.classList.remove("active");
             button.classList.remove("active");
@@ -76,21 +89,30 @@ function initMobileMenu() {
 
 }
 
+
+
 /*==================================================
     SMOOTH SCROLL
 ==================================================*/
 
-function initSmoothScroll() {
+function initSmoothScroll(){
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
-        anchor.addEventListener("click", function(e){
 
-            const target = document.querySelector(this.getAttribute("href"));
+        anchor.addEventListener("click",function(e){
+
+
+            const target=document.querySelector(
+                this.getAttribute("href")
+            );
+
 
             if(!target) return;
 
+
             e.preventDefault();
+
 
             target.scrollIntoView({
 
@@ -98,11 +120,15 @@ function initSmoothScroll() {
 
             });
 
+
         });
+
 
     });
 
 }
+
+
 
 /*==================================================
     BACK TO TOP
@@ -110,13 +136,17 @@ function initSmoothScroll() {
 
 function initBackToTop(){
 
-    const btn = document.getElementById("backToTop");
+    const btn=document.getElementById("backToTop");
+
 
     if(!btn) return;
 
+
+
     window.addEventListener("scroll",()=>{
 
-        if(window.scrollY>600){
+
+        if(window.scrollY > 600){
 
             btn.classList.add("show");
 
@@ -126,42 +156,60 @@ function initBackToTop(){
 
         }
 
+
     });
 
+
+
     btn.addEventListener("click",()=>{
+
 
         window.scrollTo({
 
             top:0,
+
             behavior:"smooth"
 
         });
 
+
     });
+
 
 }
 
+
+
 /*==================================================
-    LOADING SCREEN
+    LOADER
 ==================================================*/
 
 function initLoader(){
 
     const loader=document.getElementById("loader");
 
+
     if(!loader) return;
+
 
     window.addEventListener("load",()=>{
 
+
         setTimeout(()=>{
+
 
             loader.classList.add("hide");
 
+
         },800);
+
 
     });
 
+
 }
+
+
 
 /*==================================================
     SCROLL REVEAL
@@ -169,13 +217,34 @@ function initLoader(){
 
 function initRevealAnimation(){
 
+
     const items=document.querySelectorAll(
-        ".section-header,.leader-card,.committee-card,.membership-card,.shirt-card,.why-card,.feature,.mission-card,.stat-box,.payment-card,.faq-item,.contact-card,.timeline-item,.sponsor-card"
+
+        ".section-header,"+
+        ".leader-card,"+
+        ".committee-card,"+
+        ".membership-card,"+
+        ".shirt-card,"+
+        ".slide,"+
+        ".why-card,"+
+        ".feature,"+
+        ".mission-card,"+
+        ".stat-box,"+
+        ".payment-card,"+
+        ".faq-item,"+
+        ".contact-card,"+
+        ".timeline-item,"+
+        ".sponsor-card"
+
     );
+
+
 
     const observer=new IntersectionObserver(entries=>{
 
+
         entries.forEach(entry=>{
+
 
             if(entry.isIntersecting){
 
@@ -183,7 +252,9 @@ function initRevealAnimation(){
 
             }
 
+
         });
+
 
     },{
 
@@ -191,55 +262,80 @@ function initRevealAnimation(){
 
     });
 
+
+
     items.forEach(item=>observer.observe(item));
+
 
 }
 
+
+
 /*==================================================
-    COUNTER ANIMATION
+    COUNTERS
 ==================================================*/
 
 function initCounters(){
 
-    const counters=document.querySelectorAll(".stat-box h2,.hero-stats h2");
+
+    const counters=document.querySelectorAll(
+
+        ".stat-box h2,.hero-stats h2"
+
+    );
+
+
 
     counters.forEach(counter=>{
 
-        const value=counter.innerText.replace(/\D/g,'');
+
+        let value = counter.innerText.replace(/\D/g,'');
+
 
         if(value==="") return;
 
+
+
         const target=parseInt(value);
+
 
         let current=0;
 
+
         const speed=Math.max(15,2000/target);
+
+
 
         const update=()=>{
 
+
             current++;
+
 
             counter.innerHTML=current+"+";
 
-            if(current<target){
+
+
+            if(current < target){
 
                 setTimeout(update,speed);
 
             }else{
 
-                if(counter.innerHTML.includes("2025")){
-
-                    counter.innerHTML="2025";
-
-                }
+                counter.innerHTML=target+"+";
 
             }
 
+
         };
+
+
 
         const observer=new IntersectionObserver(entries=>{
 
+
             entries.forEach(entry=>{
+
 
                 if(entry.isIntersecting){
 
@@ -249,33 +345,50 @@ function initCounters(){
 
                 }
 
+
             });
+
 
         });
 
+
+
         observer.observe(counter);
+
+
 
     });
 
+
 }
 
+
+
 /*==================================================
-    FAQ ACCORDION
+    FAQ
 ==================================================*/
 
 function initFAQ(){
 
+
     document.querySelectorAll(".faq-item").forEach(item=>{
+
 
         item.addEventListener("click",()=>{
 
+
             item.classList.toggle("open");
+
 
         });
 
+
     });
 
+
 }
+
+
 
 /*==================================================
     CONTACT FORM
@@ -283,21 +396,34 @@ function initFAQ(){
 
 function initContactForm(){
 
+
     const form=document.querySelector(".contact-form form");
+
 
     if(!form) return;
 
-    form.addEventListener("submit",(e)=>{
+
+
+    form.addEventListener("submit",e=>{
+
 
         e.preventDefault();
 
-        alert("Thank you! Your message has been received.");
+
+        alert(
+            "Thank you! Your message has been received."
+        );
+
 
         form.reset();
 
+
     });
 
+
 }
+
+
 
 /*==================================================
     NEWSLETTER
@@ -305,63 +431,102 @@ function initContactForm(){
 
 function initNewsletter(){
 
+
     const form=document.querySelector(".newsletter form");
+
 
     if(!form) return;
 
-    form.addEventListener("submit",(e)=>{
+
+
+    form.addEventListener("submit",e=>{
+
 
         e.preventDefault();
 
+
+
         const input=form.querySelector("input");
+
+
 
         if(input.value===""){
 
-            alert("Please enter your email.");
+            alert(
+                "Please enter your email."
+            );
 
             return;
 
         }
 
-        alert("Successfully subscribed!");
+
+
+        alert(
+            "Successfully subscribed!"
+        );
+
 
         input.value="";
 
+
     });
+
 
 }
 
+
+
 /*==================================================
-    RIPPLE BUTTON EFFECT
+    RIPPLE BUTTON
 ==================================================*/
 
 function initRippleEffect(){
 
-    document.querySelectorAll(".btn-primary,.btn-secondary").forEach(button=>{
+
+    document.querySelectorAll(
+        ".btn-primary,.btn-secondary"
+    )
+    .forEach(button=>{
+
 
         button.addEventListener("click",function(e){
 
+
             const ripple=document.createElement("span");
 
+
             ripple.className="ripple";
+
 
             ripple.style.left=e.offsetX+"px";
 
             ripple.style.top=e.offsetY+"px";
 
+
             this.appendChild(ripple);
+
+
 
             setTimeout(()=>{
 
+
                 ripple.remove();
+
 
             },600);
 
+
+
         });
+
 
     });
 
+
 }
+
+
 
 /*==================================================
     HERO PARALLAX
@@ -369,17 +534,29 @@ function initRippleEffect(){
 
 function initHeroParallax(){
 
-    const hero=document.querySelector(".hero-image img");
+
+    const hero=document.querySelector(
+        ".hero-image img"
+    );
+
 
     if(!hero) return;
 
+
+
     window.addEventListener("scroll",()=>{
 
-        hero.style.transform=`translateY(${window.scrollY*.12}px)`;
+
+        hero.style.transform=
+        `translateY(${window.scrollY*.12}px)`;
+
 
     });
 
+
 }
+
+
 
 /*==================================================
     ACTIVE NAVIGATION
@@ -387,38 +564,191 @@ function initHeroParallax(){
 
 function initActiveNavigation(){
 
+
     const sections=document.querySelectorAll("section");
 
     const navLinks=document.querySelectorAll("nav a");
 
+
+
     window.addEventListener("scroll",()=>{
+
 
         let current="";
 
+
+
         sections.forEach(section=>{
 
-            const top=section.offsetTop-120;
+
+            const top=
+            section.offsetTop-120;
+
+
 
             if(window.scrollY>=top){
 
-                current=section.getAttribute("id");
+                current=section.id;
 
             }
 
+
         });
+
+
 
         navLinks.forEach(link=>{
 
+
             link.classList.remove("active");
 
-            if(link.getAttribute("href")==="#"+current){
+
+
+            if(
+                link.getAttribute("href")
+                ==="#"+current
+            ){
 
                 link.classList.add("active");
 
             }
 
+
+
         });
 
+
+
     });
+
+
+
+}
+
+
+
+/*==================================================
+    SHIRT SLIDESHOW
+==================================================*/
+
+function initShirtSlider(){
+
+
+    const slides=document.querySelectorAll(".slide");
+
+    const next=document.querySelector(".next");
+
+    const prev=document.querySelector(".prev");
+
+
+
+    if(!slides.length) return;
+
+
+
+    let current=0;
+
+
+
+    function showSlide(index){
+
+
+        slides.forEach(slide=>{
+
+
+            slide.classList.remove("active");
+
+
+        });
+
+
+
+        slides[index].classList.add("active");
+
+
+    }
+
+
+
+
+    if(next){
+
+
+        next.addEventListener("click",()=>{
+
+
+            current++;
+
+
+            if(current>=slides.length){
+
+                current=0;
+
+            }
+
+
+
+            showSlide(current);
+
+
+
+        });
+
+
+    }
+
+
+
+
+    if(prev){
+
+
+        prev.addEventListener("click",()=>{
+
+
+            current--;
+
+
+            if(current<0){
+
+                current=slides.length-1;
+
+            }
+
+
+
+            showSlide(current);
+
+
+
+        });
+
+
+    }
+
+
+
+
+    setInterval(()=>{
+
+
+        current++;
+
+
+        if(current>=slides.length){
+
+            current=0;
+
+        }
+
+
+
+        showSlide(current);
+
+
+
+    },5000);
+
+
 
 }

@@ -2401,7 +2401,7 @@ TOAST
 position:fixed;
 top:25px;
 right:25px;
-display:flex;
+display:none;
 flex-direction:column;
 gap:15px;
 z-index:999999;

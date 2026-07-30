@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cabadbaran Pullers | Admin Dashboard</title>
+
+    <link rel="icon" href="images/logo.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/6b5b7f1f89.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<!-- ===========================
+    SIDEBAR
+=========================== -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <img src="images/logo.png">
+
+        <h2>Cabadbaran Pullers</h2>
+
+        <span>Admin Panel</span>
+
+    </div>
+
+    <nav>
+
+        <a href="#" class="active">
+
+            <i class="fas fa-home"></i>
+
+            Dashboard
+
+        </a>
+
+        <a href="#members">
+
+            <i class="fas fa-users"></i>
+
+            Members
+
+        </a>
+
+        <a href="#statistics">
+
+            <i class="fas fa-chart-bar"></i>
+
+            Statistics
+
+        </a>
+
+        <a href="index.html">
+
+            <i class="fas fa-globe"></i>
+
+            Website
+
+        </a>
+
+    </nav>
+
+</aside>
+
+<!-- ===========================
+    MAIN CONTENT
+=========================== -->
+
+<main class="admin-content">
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+        <div>
+
+            <h1>Membership Dashboard</h1>
+
+            <p>
+                Cabadbaran Pullers Registration Management
+            </p>
+
+        </div>
+
+        <button id="refreshBtn">
+
+            <i class="fas fa-rotate"></i>
+
+            Refresh
+
+        </button>
+
+    </header>
+
+    <!-- DASHBOARD CARDS -->
+
+    <section class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <i class="fas fa-users"></i>
+
+            <h3 id="totalMembers">0</h3>
+
+            <span>Total Registrations</span>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <i class="fas fa-user"></i>
+
+            <h3 id="standardMembers">0</h3>
+
+            <span>Standard Members</span>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <i class="fas fa-trophy"></i>
+
+            <h3 id="athleteMembers">0</h3>
+
+            <span>Athlete Members</span>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <i class="fas fa-crown"></i>
+
+            <h3 id="lifetimeMembers">0</h3>
+
+            <span>Lifetime Members</span>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <i class="fas fa-hourglass-half"></i>
+
+            <h3 id="pendingCount">0</h3>
+
+            <span>Pending</span>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <i class="fas fa-check-circle"></i>
+
+            <h3 id="approvedCount">0</h3>
+
+            <span>Approved</span>
+
+        </div>
+
+    </section>
+
+    <!-- SEARCH -->
+
+    <section class="table-toolbar">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by Name, Email or Phone">
+
+        <select id="membershipFilter">
+
+            <option value="">All Memberships</option>
+
+            <option>Standard</option>
+
+            <option>Athlete</option>
+
+            <option>Lifetime</option>
+
+        </select>
+
+        <select id="statusFilter">
+
+            <option value="">All Status</option>
+
+            <option>Pending</option>
+
+            <option>Approved</option>
+
+            <option>Rejected</option>
+
+        </select>
+
+    </section>
+
+    <!-- MEMBERS TABLE -->
+
+    <section class="table-wrapper">
+
+        <table id="membersTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Date</th>
+
+                    <th>Name</th>
+
+                    <th>Age</th>
+
+                    <th>Gender</th>
+
+                    <th>Phone</th>
+
+                    <th>Email</th>
+
+                    <th>Membership</th>
+
+                    <th>Payment</th>
+
+                    <th>Status</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="membersBody">
+
+                <!-- Filled by admin.js -->
+
+            </tbody>
+
+        </table>
+
+    </section>
+        <!-- ==========================================
+        EMPTY STATE
+    =========================================== -->
+
+    <div class="empty-state" id="emptyState" style="display:none;">
+
+        <i class="fas fa-users-slash"></i>
+
+        <h2>No registrations found</h2>
+
+        <p>
+            There are currently no members matching your search.
+        </p>
+
+    </div>
+
+</main>
+
+<!-- ==========================================
+    VIEW MEMBER MODAL
+========================================== -->
+
+<div class="modal" id="viewModal">
+
+    <div class="modal-content large">
+
+        <div class="modal-header">
+
+            <h2>
+
+                <i class="fas fa-user"></i>
+
+                Member Information
+
+            </h2>
+
+            <button class="close-modal" id="closeViewModal">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div id="memberDetails">
+
+                <!-- Filled by admin.js -->
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button class="btn secondary" id="closeViewButton">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+    DELETE CONFIRMATION
+========================================== -->
+
+<div class="modal" id="deleteModal">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                <i class="fas fa-trash"></i>
+
+                Delete Member
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Are you sure you want to permanently delete this registration?
+
+            </p>
+
+            <p>
+
+                <strong>This action cannot be undone.</strong>
+
+            </p>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btn secondary"
+                id="cancelDelete">
+
+                Cancel
+
+            </button>
+
+            <button
+                class="btn danger"
+                id="confirmDelete">
+
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+    LOADING OVERLAY
+========================================== -->
+
+<div class="loading-screen" id="loadingScreen">
+
+    <div class="loader"></div>
+
+    <h3>Loading registrations...</h3>
+
+</div>
+
+<!-- ==========================================
+    FOOTER
+========================================== -->
+
+<footer class="admin-footer">
+
+    <p>
+
+        © 2026 Cabadbaran Pullers Club
+
+    </p>
+
+</footer>
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>

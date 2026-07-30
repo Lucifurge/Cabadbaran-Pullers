@@ -637,56 +637,60 @@ lastName: getValue('[name="last_name"]'),
     SUBMIT TO GOOGLE APPS SCRIPT
 ==================================================*/
 
-async function submitRegistration(){
+/*==================================================
+    SUBMIT TO GOOGLE APPS SCRIPT
+==================================================*/
+
+async function submitRegistration() {
 
     const data = buildFormData();
+
+    const formData = new FormData();
+
+    Object.keys(data).forEach(key => {
+
+        formData.append(key, data[key] ?? "");
+
+    });
 
     submitButton.classList.add("loading");
     submitButton.disabled = true;
 
-    try{
+    try {
 
-        const response = await fetch(CONFIG.API_URL,{
+        const response = await fetch(CONFIG.API_URL, {
 
-            method:"POST",
+            method: "POST",
 
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify(data)
+            body: formData
 
         });
-
-        if(!response.ok){
-
-            throw new Error("Server returned an error.");
-
-        }
 
         const result = await response.json();
 
         console.log(result);
 
-        registrationSuccess();
+        if (result.success) {
 
-    }
+            registrationSuccess();
 
-    catch(error){
+        } else {
+
+            alert(result.message || "Registration failed.");
+
+        }
+
+    } catch (error) {
 
         console.error(error);
 
-        alert(
-            "Registration failed.\n\nPlease check your internet connection or try again later."
-        );
+        alert("Unable to connect to the server.");
 
-    }
-
-    finally{
+    } finally {
 
         submitButton.classList.remove("loading");
 
-        submitButton.disabled=false;
+        submitButton.disabled = false;
 
     }
 
@@ -767,21 +771,21 @@ function resetRegistration(){
     PREVENT DOUBLE SUBMIT
 ==================================================*/
 
-let isSubmitting=false;
+let isSubmitting = false;
 
-form.addEventListener("submit",async(e)=>{
+form.addEventListener("submit", async function (e) {
 
     e.preventDefault();
 
-    if(isSubmitting) return;
+    if (isSubmitting) return;
 
-    if(!validateStep(currentStep)) return;
+    if (!validateStep(currentStep)) return;
 
-    isSubmitting=true;
+    isSubmitting = true;
 
     await submitRegistration();
 
-    isSubmitting=false;
+    isSubmitting = false;
 
 });
 

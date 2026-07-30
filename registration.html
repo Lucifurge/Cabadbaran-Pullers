@@ -238,6 +238,772 @@ Next
 </div>
 
 </section>
+    <!-- =======================================
+STEP 2 - EMERGENCY CONTACT
+======================================= -->
+
+<div class="form-step">
+
+    <h2>
+        <i class="fas fa-user-shield"></i>
+        Emergency Contact
+    </h2>
+
+    <p class="step-description">
+        Please provide the details of the person we should contact in case of an emergency during training or competitions.
+    </p>
+
+    <div class="grid-2">
+
+        <div class="input-group">
+            <label>Emergency Contact Name *</label>
+            <input
+                type="text"
+                name="emergency_name"
+                placeholder="Juan Dela Cruz"
+                required>
+        </div>
+
+        <div class="input-group">
+            <label>Relationship *</label>
+
+            <select name="relationship" required>
+                <option value="">Select Relationship</option>
+                <option>Father</option>
+                <option>Mother</option>
+                <option>Brother</option>
+                <option>Sister</option>
+                <option>Spouse</option>
+                <option>Guardian</option>
+                <option>Relative</option>
+                <option>Friend</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Contact Number *</label>
+            <input
+                type="tel"
+                name="emergency_phone"
+                placeholder="09XXXXXXXXX"
+                required>
+        </div>
+
+        <div class="input-group">
+            <label>Blood Type</label>
+
+            <select name="blood_type">
+                <option value="">Select Blood Type</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>Unknown</option>
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="input-group">
+        <label>Emergency Contact Address *</label>
+
+        <textarea
+            rows="3"
+            name="emergency_address"
+            placeholder="Complete Address"
+            required></textarea>
+
+    </div>
+
+    <div class="grid-2">
+
+        <div class="input-group">
+            <label>Medical Conditions (Optional)</label>
+
+            <textarea
+                rows="4"
+                name="medical_conditions"
+                placeholder="Asthma, Heart Condition, Diabetes, etc."></textarea>
+
+        </div>
+
+        <div class="input-group">
+            <label>Allergies (Optional)</label>
+
+            <textarea
+                rows="4"
+                name="allergies"
+                placeholder="Medicine, Food, Dust, etc."></textarea>
+
+        </div>
+
+    </div>
+
+    <div class="input-group">
+        <label>Additional Emergency Notes (Optional)</label>
+
+        <textarea
+            rows="4"
+            name="emergency_notes"
+            placeholder="Anything the coaches or organizers should know during training or tournaments."></textarea>
+
+    </div>
+
+    <div class="button-group">
+
+        <button
+            type="button"
+            class="prev-btn">
+
+            <i class="fas fa-arrow-left"></i>
+            Previous
+
+        </button>
+
+        <button
+            type="button"
+            class="next-btn">
+
+            Next
+            <i class="fas fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- STEP 3 HERE -->
+    <!-- =======================================
+STEP 3 - ARM WRESTLING INFORMATION
+======================================= -->
+
+<div class="form-step">
+
+    <h2>
+        <i class="fas fa-dumbbell"></i>
+        Arm Wrestling Information
+    </h2>
+
+    <p class="step-description">
+        Tell us about your arm wrestling experience to help us place you in the appropriate training and competition category.
+    </p>
+
+    <div class="grid-2">
+
+        <div class="input-group">
+            <label>Experience Level *</label>
+
+            <select name="experience_level" required>
+                <option value="">Select Experience</option>
+                <option>Beginner (0-6 Months)</option>
+                <option>Intermediate (6 Months - 2 Years)</option>
+                <option>Advanced (2+ Years)</option>
+                <option>Professional</option>
+            </select>
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Dominant Hand *</label>
+
+            <select name="dominant_hand" required>
+                <option value="">Select Hand</option>
+                <option>Right Hand</option>
+                <option>Left Hand</option>
+                <option>Ambidextrous</option>
+            </select>
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Preferred Competition Arm *</label>
+
+            <select name="competition_arm" required>
+                <option value="">Select Category</option>
+                <option>Right Arm</option>
+                <option>Left Arm</option>
+                <option>Both Arms</option>
+            </select>
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Current Weight (kg) *</label>
+
+            <input
+                type="number"
+                name="weight"
+                min="30"
+                max="200"
+                placeholder="80"
+                required>
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Height (cm) *</label>
+
+            <input
+                type="number"
+                name="height"
+                placeholder="175"
+                required>
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Weight Class *</label>
+
+            <select name="weight_class" required>
+
+                <option value="">Select Weight Class</option>
+
+                <option>55 kg Below</option>
+                <option>60 kg</option>
+                <option>65 kg</option>
+                <option>70 kg</option>
+                <option>75 kg</option>
+                <option>80 kg</option>
+                <option>85 kg</option>
+                <option>90 kg</option>
+                <option>100 kg</option>
+                <option>100+ kg</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="grid-2">
+
+        <div class="input-group">
+
+            <label>Current Club / Team</label>
+
+            <input
+                type="text"
+                name="club"
+                placeholder="Leave blank if none">
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Years of Experience</label>
+
+            <input
+                type="number"
+                name="years"
+                min="0"
+                placeholder="1">
+
+        </div>
+
+    </div>
+
+    <div class="input-group">
+
+        <label>Previous Competitions</label>
+
+        <textarea
+            rows="4"
+            name="competitions"
+            placeholder="List any tournaments or competitions you have participated in."></textarea>
+
+    </div>
+
+    <div class="input-group">
+
+        <label>Achievements / Awards</label>
+
+        <textarea
+            rows="4"
+            name="achievements"
+            placeholder="Champion, Runner-up, Top 8, etc. (Optional)"></textarea>
+
+    </div>
+
+    <div class="input-group">
+
+        <label>Why do you want to join Cabadbaran Pullers?</label>
+
+        <textarea
+            rows="5"
+            name="motivation"
+            placeholder="Tell us about your goals and what motivates you to become a member."></textarea>
+
+    </div>
+
+    <div class="button-group">
+
+        <button
+            type="button"
+            class="prev-btn">
+
+            <i class="fas fa-arrow-left"></i>
+            Previous
+
+        </button>
+
+        <button
+            type="button"
+            class="next-btn">
+
+            Next
+            <i class="fas fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =======================================
+STEP 4 - MEMBERSHIP
+======================================= -->
+
+<div class="form-step">
+
+    <h2>
+        <i class="fas fa-id-card"></i>
+        Membership Selection
+    </h2>
+
+    <p class="step-description">
+        Select the membership that best fits your needs. Your membership will determine your club privileges and registration fee.
+    </p>
+
+    <div class="membership-grid">
+
+        <!-- STANDARD -->
+
+        <label class="membership-card">
+
+            <input
+                type="radio"
+                name="membership"
+                value="Standard"
+                required>
+
+            <div class="membership-content">
+
+                <div class="membership-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <h3>Standard Member</h3>
+
+                <div class="price">
+                    ₱150
+                </div>
+
+                <ul>
+
+                    <li><i class="fas fa-check"></i> Official Club Membership</li>
+
+                    <li><i class="fas fa-check"></i> Access to Regular Training</li>
+
+                    <li><i class="fas fa-check"></i> Join Club Activities</li>
+
+                    <li><i class="fas fa-check"></i> Digital Membership Certificate</li>
+
+                    <li><i class="fas fa-check"></i> Eligible for Future Upgrades</li>
+
+                </ul>
+
+            </div>
+
+        </label>
+
+        <!-- ATHLETE -->
+
+        <label class="membership-card featured">
+
+            <input
+                type="radio"
+                name="membership"
+                value="Athlete">
+
+            <div class="membership-content">
+
+                <span class="popular">
+                    MOST POPULAR
+                </span>
+
+                <div class="membership-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+
+                <h3>Athlete Member</h3>
+
+                <div class="price">
+                    ₱500
+                </div>
+
+                <ul>
+
+                    <li><i class="fas fa-check"></i> Everything in Standard</li>
+
+                    <li><i class="fas fa-check"></i> Tournament Eligibility</li>
+
+                    <li><i class="fas fa-check"></i> Priority Registration</li>
+
+                    <li><i class="fas fa-check"></i> Athlete Recognition</li>
+
+                    <li><i class="fas fa-check"></i> Jersey Discount (when available)</li>
+
+                </ul>
+
+            </div>
+
+        </label>
+
+        <!-- LIFETIME -->
+
+        <label class="membership-card">
+
+            <input
+                type="radio"
+                name="membership"
+                value="Lifetime">
+
+            <div class="membership-content">
+
+                <div class="membership-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+
+                <h3>Lifetime Member</h3>
+
+                <div class="price">
+                    ₱2,500</div>
+
+                <ul>
+
+                    <li><i class="fas fa-check"></i> Lifetime Membership</li>
+
+                    <li><i class="fas fa-check"></i> No Renewal Fees</li>
+
+                    <li><i class="fas fa-check"></i> Recognition Certificate</li>
+
+                    <li><i class="fas fa-check"></i> Lifetime Club Benefits</li>
+
+                    <li><i class="fas fa-check"></i> Priority Club Activities</li>
+
+                </ul>
+
+            </div>
+
+        </label>
+
+    </div>
+
+    <!-- Selected Fee -->
+
+    <div class="selected-plan">
+
+        <h3>
+            Selected Membership Fee
+        </h3>
+
+        <div id="selectedPrice">
+
+            Please select a membership plan.
+
+        </div>
+
+    </div>
+
+    <!-- TERMS -->
+
+    <div class="agreement-box">
+
+        <h3>
+            Terms & Conditions
+        </h3>
+
+        <label class="checkbox">
+
+            <input
+                type="checkbox"
+                required>
+
+            <span>
+                I agree to abide by the Constitution, Rules, and Regulations of Cabadbaran Pullers.
+            </span>
+
+        </label>
+
+        <label class="checkbox">
+
+            <input
+                type="checkbox"
+                required>
+
+            <span>
+                I understand that arm wrestling is a physical sport and I voluntarily participate at my own risk.
+            </span>
+
+        </label>
+
+        <label class="checkbox">
+
+            <input
+                type="checkbox"
+                required>
+
+            <span>
+                I consent to the collection and storage of my personal information for membership records and official club activities.
+            </span>
+
+        </label>
+
+        <label class="checkbox">
+
+            <input
+                type="checkbox"
+                required>
+
+            <span>
+                I certify that all information provided in this registration form is true and accurate.
+            </span>
+
+        </label>
+
+    </div>
+
+    <div class="button-group">
+
+        <button
+            type="button"
+            class="prev-btn">
+
+            <i class="fas fa-arrow-left"></i>
+            Previous
+
+        </button>
+
+        <button
+            type="button"
+            class="next-btn">
+
+            Review Application
+            <i class="fas fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =======================================
+STEP 5 - REVIEW & SUBMIT
+======================================= -->
+
+<div class="form-step">
+
+    <h2>
+        <i class="fas fa-check-circle"></i>
+        Review Your Application
+    </h2>
+
+    <p class="step-description">
+        Please review all the information below before submitting your membership application. Make sure everything is correct.
+    </p>
+
+    <div class="review-container">
+
+        <!-- Profile -->
+
+        <div class="review-card">
+
+            <h3>
+                <i class="fas fa-user"></i>
+                Applicant Information
+            </h3>
+
+            <div class="review-profile">
+
+                <img
+                    src="images/default-avatar.png"
+                    id="reviewProfile">
+
+                <div>
+
+                    <h4 id="reviewName">
+                        Your Name
+                    </h4>
+
+                    <p id="reviewEmail">
+                        Email Address
+                    </p>
+
+                    <p id="reviewPhone">
+                        Phone Number
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Personal -->
+
+        <div class="review-card">
+
+            <h3>Personal Information</h3>
+
+            <div id="reviewPersonal" class="review-grid">
+
+                <!-- Filled by JavaScript -->
+
+            </div>
+
+        </div>
+
+        <!-- Emergency -->
+
+        <div class="review-card">
+
+            <h3>Emergency Contact</h3>
+
+            <div id="reviewEmergency" class="review-grid">
+
+            </div>
+
+        </div>
+
+        <!-- Arm Wrestling -->
+
+        <div class="review-card">
+
+            <h3>Arm Wrestling Information</h3>
+
+            <div id="reviewArm" class="review-grid">
+
+            </div>
+
+        </div>
+
+        <!-- Membership -->
+
+        <div class="review-card">
+
+            <h3>Membership</h3>
+
+            <div id="reviewMembership" class="review-grid">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Declaration -->
+
+    <div class="declaration-box">
+
+        <h3>
+            Applicant Declaration
+        </h3>
+
+        <p>
+
+            By clicking <strong>Submit Registration</strong>,
+            I certify that the information provided is complete
+            and accurate to the best of my knowledge.
+
+            I agree to follow the Constitution, Rules, Regulations,
+            and Code of Conduct of Cabadbaran Pullers.
+
+        </p>
+
+    </div>
+
+    <!-- Buttons -->
+
+    <div class="button-group">
+
+        <button
+            type="button"
+            class="prev-btn">
+
+            <i class="fas fa-arrow-left"></i>
+            Previous
+
+        </button>
+
+        <button
+            type="submit"
+            class="submit-btn">
+
+            <i class="fas fa-paper-plane"></i>
+
+            Submit Registration
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- SUCCESS MODAL -->
+
+<div class="success-modal" id="successModal">
+
+    <div class="success-box">
+
+        <div class="success-icon">
+
+            <i class="fas fa-check-circle"></i>
+
+        </div>
+
+        <h2>
+            Registration Submitted!
+        </h2>
+
+        <p>
+
+            Thank you for registering with
+            <strong>Cabadbaran Pullers.</strong>
+
+        </p>
+
+        <p>
+
+            Your membership application has been successfully received.
+
+            Our committee will review your application and contact you
+            through your provided email, phone number, or Facebook account.
+
+        </p>
+
+        <a
+            href="index.html"
+            class="home-btn">
+
+            Return to Homepage
+
+        </a>
+
+    </div>
+
+</div>
 
 <script src="register.js"></script>
 

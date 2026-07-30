@@ -1456,11 +1456,24 @@ ${member.membership}
 
 <td>
 
-<span class="badge ${(member.paymentStatus||"").toLowerCase()}">
+<td>
 
-${member.paymentStatus}
+<select 
+class="payment-select"
+data-id="${member.athleteId}"
+>
 
-</span>
+<option value="Unpaid"
+${member.paymentStatus==="Unpaid" ? "selected" : ""}>
+Unpaid
+</option>
+
+<option value="Paid"
+${member.paymentStatus==="Paid" ? "selected" : ""}>
+Paid
+</option>
+
+</select>
 
 </td>
 
@@ -1695,3 +1708,60 @@ console.log(
 "color:#00ff99;font-size:16px;font-weight:bold;"
 
 );
+/*==================================================
+ PAYMENT UPDATE
+==================================================*/
+
+document.addEventListener("change", async function(e){
+
+    if(!e.target.classList.contains("payment-select"))
+        return;
+
+
+    const id = e.target.dataset.id;
+
+    const paymentStatus = e.target.value;
+
+
+    const formData = new FormData();
+
+    formData.append("action","payment");
+    formData.append("id",id);
+    formData.append("paymentStatus",paymentStatus);
+
+
+    try{
+
+        const response = await fetch(CONFIG.API_URL,{
+            method:"POST",
+            body:formData
+        });
+
+
+        const result = await response.json();
+
+        console.log(result);
+
+
+        if(result.success){
+
+            alert("Payment updated!");
+
+            loadMembers();
+
+        }else{
+
+            alert(result.message);
+
+        }
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("Payment update failed.");
+
+    }
+
+});

@@ -1,0 +1,335 @@
+/*==================================================
+    CABADBARAN PULLERS
+    ADMIN PANEL
+==================================================*/
+
+:root{
+
+    --primary:#D4AF37;
+    --primary-dark:#b9931d;
+
+    --dark:#0f0f0f;
+    --dark2:#181818;
+    --dark3:#232323;
+
+    --white:#ffffff;
+
+    --gray:#a5a5a5;
+
+    --green:#27ae60;
+
+    --red:#e74c3c;
+
+    --orange:#f39c12;
+
+    --shadow:0 15px 40px rgba(0,0,0,.35);
+
+    --radius:18px;
+
+    --transition:.3s ease;
+
+}
+
+/*==================================================
+    RESET
+==================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#111;
+
+    color:#fff;
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/*==================================================
+    SIDEBAR
+==================================================*/
+
+.sidebar{
+
+    width:280px;
+
+    background:linear-gradient(180deg,#171717,#0d0d0d);
+
+    border-right:1px solid rgba(255,255,255,.08);
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    bottom:0;
+
+    overflow:auto;
+
+    box-shadow:var(--shadow);
+
+    z-index:999;
+
+}
+
+.sidebar-logo{
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.sidebar-logo img{
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:contain;
+
+    margin-bottom:15px;
+
+}
+
+.sidebar-logo h2{
+
+    font-size:22px;
+
+    color:var(--primary);
+
+    margin-bottom:5px;
+
+}
+
+.sidebar-logo span{
+
+    color:#bbb;
+
+    font-size:14px;
+
+}
+
+.sidebar nav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    padding:20px;
+
+    gap:10px;
+
+}
+
+.sidebar nav a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    padding:15px 18px;
+
+    border-radius:12px;
+
+    transition:var(--transition);
+
+    font-weight:500;
+
+}
+
+.sidebar nav a i{
+
+    width:22px;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+.sidebar nav a:hover{
+
+    background:rgba(212,175,55,.12);
+
+    color:var(--primary);
+
+}
+
+.sidebar nav a.active{
+
+    background:var(--primary);
+
+    color:#111;
+
+    font-weight:700;
+
+}
+
+/*==================================================
+    MAIN CONTENT
+==================================================*/
+
+.admin-content{
+
+    flex:1;
+
+    margin-left:280px;
+
+    padding:40px;
+
+}
+
+/*==================================================
+    HEADER
+==================================================*/
+
+.top-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+    gap:20px;
+
+}
+
+.top-header h1{
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+.top-header p{
+
+    color:#b5b5b5;
+
+}
+
+#refreshBtn{
+
+    background:var(--primary);
+
+    color:#111;
+
+    border:none;
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+#refreshBtn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+/*==================================================
+    DASHBOARD CARDS
+==================================================*/
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-bottom:35px;
+
+}
+
+.dashboard-card{
+
+    background:linear-gradient(145deg,#1f1f1f,#151515);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:18px;
+
+    padding:28px;
+
+    transition:.3s;
+
+    box-shadow:var(--shadow);
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(212,175,55,.4);
+
+}
+
+.dashboard-card i{
+
+    font-size:34px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.dashboard-card h3{
+
+    font-size:38px;
+
+    margin-bottom:8px;
+
+}
+
+.dashboard-card span{
+
+    color:#bfbfbf;
+
+    font-size:15px;
+
+}

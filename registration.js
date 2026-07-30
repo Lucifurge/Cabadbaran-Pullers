@@ -445,9 +445,8 @@ function updateReview(){
         PROFILE
     ==============================*/
 
-    document.getElementById("reviewName").textContent=
-
-        `${getValue('input[placeholder="Juan"]')} ${getValue('input[placeholder="Dela Cruz"]')}`;
+ document.getElementById("reviewName").textContent =
+`${getValue('[name="first_name"]')} ${getValue('[name="last_name"]')}`;
 
     document.getElementById("reviewEmail").textContent=
 

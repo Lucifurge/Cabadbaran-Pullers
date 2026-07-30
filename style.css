@@ -2761,3 +2761,582 @@ nav a.active::after{
     }
 
 }
+/*==================================================
+    SCROLL REVEAL ANIMATIONS
+==================================================*/
+
+.section-header,
+.about-image,
+.about-content,
+.feature,
+.why-card,
+.mission-card,
+.leader-card,
+.committee-card,
+.stat-box,
+.membership-card,
+.shirt-card,
+.payment-card,
+.timeline-item,
+.faq-item,
+.contact-card,
+.contact-form,
+.sponsor-card{
+
+    opacity:0;
+    transform:translateY(60px);
+    transition:all .8s ease;
+
+}
+
+.visible{
+
+    opacity:1 !important;
+    transform:translateY(0) !important;
+
+}
+
+/*==================================================
+    RIPPLE EFFECT
+==================================================*/
+
+.btn-primary,
+.btn-secondary{
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+.ripple{
+
+    position:absolute;
+
+    width:12px;
+    height:12px;
+
+    background:rgba(255,255,255,.45);
+
+    border-radius:50%;
+
+    transform:translate(-50%,-50%) scale(0);
+
+    animation:ripple .6s linear;
+
+    pointer-events:none;
+
+}
+
+@keyframes ripple{
+
+    to{
+
+        transform:translate(-50%,-50%) scale(28);
+
+        opacity:0;
+
+    }
+
+}
+
+/*==================================================
+    IMAGE HOVER
+==================================================*/
+
+img{
+
+    user-select:none;
+    -webkit-user-drag:none;
+
+}
+
+.hero-image img,
+.about-image img,
+.leader-image img,
+.shirt-card img{
+
+    transition:.5s ease;
+
+}
+
+.hero-image:hover img{
+
+    transform:scale(1.04);
+
+}
+
+/*==================================================
+    LINK ANIMATION
+==================================================*/
+
+a{
+
+    transition:.3s ease;
+
+}
+
+a:hover{
+
+    text-decoration:none;
+
+}
+
+/*==================================================
+    SELECTION
+==================================================*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:#111;
+
+}
+
+/*==================================================
+    PLACEHOLDERS
+==================================================*/
+
+input::placeholder,
+textarea::placeholder{
+
+    color:#8d8d8d;
+
+}
+
+/*==================================================
+    FOCUS
+==================================================*/
+
+input:focus,
+textarea:focus{
+
+    box-shadow:0 0 20px rgba(212,175,55,.18);
+
+}
+
+/*==================================================
+    MOBILE NAVIGATION
+==================================================*/
+
+@media(max-width:992px){
+
+    .menu-toggle{
+
+        display:block;
+
+        z-index:10001;
+
+    }
+
+    nav{
+
+        position:fixed;
+
+        top:90px;
+
+        left:-100%;
+
+        width:100%;
+
+        background:#0d0d0d;
+
+        transition:.4s;
+
+        padding:40px;
+
+        border-top:1px solid rgba(255,255,255,.08);
+
+    }
+
+    nav.active{
+
+        left:0;
+
+    }
+
+    nav ul{
+
+        flex-direction:column;
+
+        gap:25px;
+
+        text-align:center;
+
+    }
+
+    nav a{
+
+        font-size:1.1rem;
+
+    }
+
+    .header .btn-primary{
+
+        display:none;
+
+    }
+
+}
+
+/*==================================================
+    LARGE TABLET
+==================================================*/
+
+@media(max-width:1200px){
+
+    h1{
+
+        font-size:4rem;
+
+    }
+
+    .hero-grid{
+
+        gap:40px;
+
+    }
+
+    .about-grid,
+    .contact-grid{
+
+        gap:40px;
+
+    }
+
+    .shirts-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+/*==================================================
+    TABLET
+==================================================*/
+
+@media(max-width:992px){
+
+    section{
+
+        padding:90px 0;
+
+    }
+
+    h1{
+
+        font-size:3.5rem;
+
+    }
+
+    h2{
+
+        font-size:2.2rem;
+
+    }
+
+    .hero-grid,
+    .about-grid,
+    .contact-grid,
+    .mission-grid,
+    .membership-grid,
+    .founders-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .statistics-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .why-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .timeline{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .timeline::before{
+
+        display:none;
+
+    }
+
+    .sponsor-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .hero{
+
+        text-align:center;
+
+    }
+
+    .hero p{
+
+        margin-left:auto;
+
+        margin-right:auto;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+    }
+
+}
+
+/*==================================================
+    MOBILE
+==================================================*/
+
+@media(max-width:768px){
+
+    .container{
+
+        width:94%;
+
+    }
+
+    section{
+
+        padding:80px 0;
+
+    }
+
+    h1{
+
+        font-size:2.8rem;
+
+    }
+
+    h2{
+
+        font-size:2rem;
+
+    }
+
+    .hero-stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .statistics-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .why-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .shirts-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .committee-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .timeline{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .payment-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .sponsor-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .newsletter form{
+
+        flex-direction:column;
+
+    }
+
+    .newsletter input{
+
+        width:100%;
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .footer-social{
+
+        justify-content:center;
+
+    }
+
+    .footer-bottom{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .contact-form{
+
+        padding:30px;
+
+    }
+
+    .newsletter-box{
+
+        padding:35px;
+
+    }
+
+}
+
+/*==================================================
+    SMALL MOBILE
+==================================================*/
+
+@media(max-width:480px){
+
+    h1{
+
+        font-size:2.2rem;
+
+    }
+
+    h2{
+
+        font-size:1.6rem;
+
+    }
+
+    h3{
+
+        font-size:1.2rem;
+
+    }
+
+    p{
+
+        font-size:.95rem;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:100%;
+
+    }
+
+    .logo img{
+
+        width:48px;
+        height:48px;
+
+    }
+
+    .logo h2{
+
+        font-size:.95rem;
+
+    }
+
+    .logo span{
+
+        font-size:.72rem;
+
+    }
+
+    .scroll{
+
+        display:none;
+
+    }
+
+}
+
+/*==================================================
+    PERFORMANCE
+==================================================*/
+
+.hero-image img,
+.about-image img,
+.leader-image img,
+.shirt-card img,
+.committee-card,
+.membership-card,
+.payment-card,
+.stat-box,
+.why-card{
+
+    will-change:transform;
+
+}
+
+/*==================================================
+    REDUCE MOTION
+==================================================*/
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+/*==================================================
+    END OF STYLE.CSS
+==================================================*/

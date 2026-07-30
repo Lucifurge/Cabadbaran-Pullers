@@ -17,6 +17,7 @@ const CONFIG = {
     ELEMENTS
 ==============================*/
 
+
 const form = document.getElementById("registrationForm");
 
 const steps = document.querySelectorAll(".form-step");
@@ -30,6 +31,7 @@ const prevButtons = document.querySelectorAll(".prev-btn");
 const submitButton = document.querySelector(".submit-btn");
 
 const successModal = document.getElementById("successModal");
+const loadingOverlay = document.getElementById("loadingOverlay");
 
 /*==============================
     CURRENT STEP
@@ -643,57 +645,52 @@ lastName: getValue('[name="last_name"]'),
 
 async function submitRegistration() {
 
-    const data = buildFormData();
+   const data = buildFormData();
 
-    const formData = new FormData();
+const formData = new FormData();
 
-    Object.keys(data).forEach(key => {
+formData.append("action", "register");
 
-        formData.append(key, data[key] ?? "");
+Object.keys(data).forEach(key => {
 
-    });
+    formData.append(key, data[key] ?? "");
+
+});
 
     submitButton.classList.add("loading");
     submitButton.disabled = true;
+   loadingOverlay.style.display = "flex";
+   try {
 
-    try {
+    const response = await fetch(CONFIG.API_URL, {
+        method: "POST",
+        body: formData
+    });
 
-        const response = await fetch(CONFIG.API_URL, {
+    const result = await response.json();
 
-            method: "POST",
+    console.log(result);
 
-            body: formData
-
-        });
-
-        const result = await response.json();
-
-        console.log(result);
-
-        if (result.success) {
-
-            registrationSuccess();
-
-        } else {
-
-            alert(result.message || "Registration failed.");
-
-        }
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert("Unable to connect to the server.");
-
-    } finally {
-
-        submitButton.classList.remove("loading");
-
-        submitButton.disabled = false;
-
+    if (result.success) {
+        registrationSuccess();
+    } else {
+        alert(result.message || "Registration failed.");
     }
 
+} catch (error) {
+
+    console.error(error);
+    alert("Unable to connect to the server.");
+
+} finally {
+
+    loadingOverlay.style.display = "none";
+
+    submitButton.classList.remove("loading");
+
+    submitButton.disabled = false;
+
+}
 }
 
 /*==================================================

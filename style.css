@@ -3337,6 +3337,61 @@ textarea:focus{
 
 }
 
-/*==================================================
-    END OF STYLE.CSS
-==================================================*/
+/* ABOUT FIX */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+    opacity:1 !important;
+    visibility:visible !important;
+}
+
+
+.about-image{
+    display:block;
+    opacity:1 !important;
+    visibility:visible !important;
+}
+
+
+.about-image img{
+    width:100%;
+    border-radius:20px;
+    display:block;
+}
+
+
+.about-content{
+    display:block;
+    opacity:1 !important;
+    visibility:visible !important;
+}
+
+
+.about-content h3,
+.about-content p,
+.about-features,
+.feature{
+    opacity:1 !important;
+    visibility:visible !important;
+}
+
+
+.about-features{
+    margin-top:30px;
+}
+
+
+.feature{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+
+.feature i{
+    font-size:30px;
+    color:#d4af37;
+}

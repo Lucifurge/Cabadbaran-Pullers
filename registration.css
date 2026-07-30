@@ -385,7 +385,6 @@ body{
     from{
 
         opacity:0;
-
         transform:translateY(20px);
 
     }
@@ -393,10 +392,15 @@ body{
     to{
 
         opacity:1;
-
         transform:translateY(0);
 
     }
+
+}   /* <-- THIS IS MISSING */
+
+/*==================================================
+    PROFILE UPLOAD
+==================================================*/
 
 /*==================================================
     PROFILE UPLOAD

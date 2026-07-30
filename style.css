@@ -3395,3 +3395,66 @@ textarea:focus{
     font-size:30px;
     color:#d4af37;
 }
+.shirt-slider {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slide {
+    display:none;
+    text-align:center;
+    animation: fade 0.6s ease;
+}
+
+.slide.active {
+    display:block;
+}
+
+.slide img {
+    width:100%;
+    max-height:600px;
+    object-fit:contain;
+    border-radius:20px;
+}
+
+.slide h3 {
+    margin-top:20px;
+    font-size:28px;
+    color:#d4af37;
+}
+
+
+.prev,
+.next {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:#d4af37;
+    color:black;
+    border:none;
+    padding:15px 20px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:25px;
+}
+
+.prev {
+    left:20px;
+}
+
+.next {
+    right:20px;
+}
+
+
+@keyframes fade {
+    from {
+        opacity:0;
+    }
+
+    to {
+        opacity:1;
+    }
+}

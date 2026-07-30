@@ -98,7 +98,9 @@ async function loadMembers(){
 
     try{
 
-        const response = await fetch(CONFIG.API_URL);
+        const response = await fetch(
+    CONFIG.API_URL + "?action=members"
+);
 
         if(!response.ok){
 

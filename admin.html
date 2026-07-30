@@ -4,46 +4,83 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cabadbaran Pullers | Admin Dashboard</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="images/logo.png">
+    <title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="admin.css">
+        Cabadbaran Pullers Club | Admin Dashboard
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    </title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        rel="icon"
+        href="logo.png">
 
-    <script src="https://kit.fontawesome.com/6b5b7f1f89.js" crossorigin="anonymous"></script>
+    <link
+        rel="stylesheet"
+        href="style3.css">
+
+    <link
+        rel="stylesheet"
+        href="admin.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script
+        src="https://kit.fontawesome.com/6b5b7f1f89.js"
+        crossorigin="anonymous"></script>
 
 </head>
 
 <body>
 
-<!-- ===========================
+<!--==================================================
     SIDEBAR
-=========================== -->
+===================================================-->
 
 <aside class="sidebar">
 
     <div class="sidebar-logo">
 
-        <img src="images/logo.png">
+        <img
+            src="images/logo.png"
+            alt="Logo">
 
-        <h2>Cabadbaran Pullers</h2>
+        <h2>
 
-        <span>Admin Panel</span>
+            Cabadbaran Pullers
+
+        </h2>
+
+        <span>
+
+            Admin Dashboard
+
+        </span>
 
     </div>
 
-    <nav>
+    <nav class="sidebar-menu">
 
-        <a href="#" class="active">
+        <a
+            href="#dashboard"
+            class="active">
 
-            <i class="fas fa-home"></i>
+            <i class="fas fa-chart-pie"></i>
 
             Dashboard
 
@@ -65,6 +102,22 @@
 
         </a>
 
+        <a href="#reports">
+
+            <i class="fas fa-file-alt"></i>
+
+            Reports
+
+        </a>
+
+        <a href="registration.html">
+
+            <i class="fas fa-user-plus"></i>
+
+            Registration
+
+        </a>
+
         <a href="index.html">
 
             <i class="fas fa-globe"></i>
@@ -77,27 +130,77 @@
 
 </aside>
 
-<!-- ===========================
+<!--==================================================
     MAIN CONTENT
-=========================== -->
+===================================================-->
 
-<main class="admin-content">
+<main
+    class="admin-content"
+    id="dashboard">
 
-    <!-- HEADER -->
+<!--==================================================
+    HEADER
+===================================================-->
 
-    <header class="top-header">
+<header class="top-header">
 
-        <div>
+    <div>
 
-            <h1>Membership Dashboard</h1>
+        <h1>
 
-            <p>
-                Cabadbaran Pullers Registration Management
-            </p>
+            Membership Dashboard
+
+        </h1>
+
+        <p>
+
+            Cabadbaran Pullers Club Registration System
+
+        </p>
+
+    </div>
+
+    <div class="header-actions">
+
+        <div
+            id="liveClock"
+            class="live-clock">
+
+            Loading...
 
         </div>
 
-        <button id="refreshBtn">
+        <button
+            class="btn"
+            onclick="exportCSV()">
+
+            <i class="fas fa-file-csv"></i>
+
+            CSV
+
+        </button>
+
+        <button
+            class="btn"
+            onclick="exportJSON()">
+
+            <i class="fas fa-file-code"></i>
+
+            JSON
+
+        </button>
+
+        <button
+            class="btn"
+            onclick="toggleFullscreen()">
+
+            <i class="fas fa-expand"></i>
+
+        </button>
+
+        <button
+            class="btn"
+            id="refreshBtn">
 
             <i class="fas fa-rotate"></i>
 
@@ -105,112 +208,282 @@
 
         </button>
 
-    </header>
+    </div>
 
-    <!-- DASHBOARD CARDS -->
+</header>
 
-    <section class="dashboard-grid">
+<!--==================================================
+    DASHBOARD CARDS
+===================================================-->
 
-        <div class="dashboard-card">
+<section class="dashboard-grid">
 
-            <i class="fas fa-users"></i>
+    <div class="dashboard-card">
 
-            <h3 id="totalMembers">0</h3>
+        <i class="fas fa-users"></i>
 
-            <span>Total Registrations</span>
+        <h2 id="totalMembers">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Total Members
+
+        </span>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <i class="fas fa-user"></i>
+
+        <h2 id="standardMembers">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Standard
+
+        </span>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <i class="fas fa-dumbbell"></i>
+
+        <h2 id="athleteMembers">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Athlete
+
+        </span>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <i class="fas fa-crown"></i>
+
+        <h2 id="lifetimeMembers">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Lifetime
+
+        </span>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <i class="fas fa-hourglass-half"></i>
+
+        <h2 id="pendingCount">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Pending
+
+        </span>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <i class="fas fa-check-circle"></i>
+
+        <h2 id="approvedCount">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Approved
+
+        </span>
+
+    </div>
+
+</section>
+<!--==================================================
+    STATISTICS
+===================================================-->
+
+<section
+    class="statistics-section"
+    id="statistics">
+
+    <div class="statistics-card">
+
+        <div class="section-header">
+
+            <h2>
+
+                <i class="fas fa-chart-column"></i>
+
+                Membership Statistics
+
+            </h2>
 
         </div>
 
-        <div class="dashboard-card">
+        <canvas
+            id="registrationChart"
+            width="900"
+            height="300">
 
-            <i class="fas fa-user"></i>
+        </canvas>
 
-            <h3 id="standardMembers">0</h3>
+    </div>
 
-            <span>Standard Members</span>
+</section>
 
-        </div>
+<!--==================================================
+    SEARCH & FILTERS
+===================================================-->
 
-        <div class="dashboard-card">
+<section class="table-toolbar">
 
-            <i class="fas fa-trophy"></i>
-
-            <h3 id="athleteMembers">0</h3>
-
-            <span>Athlete Members</span>
-
-        </div>
-
-        <div class="dashboard-card">
-
-            <i class="fas fa-crown"></i>
-
-            <h3 id="lifetimeMembers">0</h3>
-
-            <span>Lifetime Members</span>
-
-        </div>
-
-        <div class="dashboard-card">
-
-            <i class="fas fa-hourglass-half"></i>
-
-            <h3 id="pendingCount">0</h3>
-
-            <span>Pending</span>
-
-        </div>
-
-        <div class="dashboard-card">
-
-            <i class="fas fa-check-circle"></i>
-
-            <h3 id="approvedCount">0</h3>
-
-            <span>Approved</span>
-
-        </div>
-
-    </section>
-
-    <!-- SEARCH -->
-
-    <section class="table-toolbar">
+    <div class="toolbar-left">
 
         <input
             type="text"
             id="searchInput"
-            placeholder="Search by Name, Email or Phone">
+            placeholder="Search by Athlete ID, Name, Email or Phone">
+
+    </div>
+
+    <div class="toolbar-right">
 
         <select id="membershipFilter">
 
-            <option value="">All Memberships</option>
+            <option value="">
 
-            <option>Standard</option>
+                All Memberships
 
-            <option>Athlete</option>
+            </option>
 
-            <option>Lifetime</option>
+            <option value="Standard">
+
+                Standard
+
+            </option>
+
+            <option value="Athlete">
+
+                Athlete
+
+            </option>
+
+            <option value="Lifetime">
+
+                Lifetime
+
+            </option>
 
         </select>
 
         <select id="statusFilter">
 
-            <option value="">All Status</option>
+            <option value="">
 
-            <option>Pending</option>
+                All Status
 
-            <option>Approved</option>
+            </option>
 
-            <option>Rejected</option>
+            <option value="Pending">
+
+                Pending
+
+            </option>
+
+            <option value="Approved">
+
+                Approved
+
+            </option>
+
+            <option value="Rejected">
+
+                Rejected
+
+            </option>
 
         </select>
 
-    </section>
+        <button
+            class="btn secondary"
+            onclick="clearFilters()">
 
-    <!-- MEMBERS TABLE -->
+            <i class="fas fa-filter-circle-xmark"></i>
 
-    <section class="table-wrapper">
+            Clear
+
+        </button>
+
+    </div>
+
+</section>
+
+<!--==================================================
+    MEMBERS TABLE
+===================================================-->
+
+<section
+    class="table-wrapper"
+    id="members">
+
+    <div class="table-header">
+
+        <div>
+
+            <h2>
+
+                Registered Members
+
+            </h2>
+
+            <p>
+
+                View and manage athlete registrations.
+
+            </p>
+
+        </div>
+
+        <span
+            class="member-counter"
+            id="memberCounter">
+
+            0 Member(s)
+
+        </span>
+
+    </div>
+
+    <div class="table-responsive">
 
         <table id="membersTable">
 
@@ -218,9 +491,11 @@
 
                 <tr>
 
-                    <th>ID</th>
+                    <th>#</th>
 
-                    <th>Date</th>
+                    <th>Athlete ID</th>
+
+                    <th>Date Registered</th>
 
                     <th>Name</th>
 
@@ -246,74 +521,96 @@
 
             <tbody id="membersBody">
 
-                <!-- Filled by admin.js -->
+                <!-- Generated by admin.js -->
 
             </tbody>
 
         </table>
 
-    </section>
-        <!-- ==========================================
-        EMPTY STATE
-    =========================================== -->
-
-    <div class="empty-state" id="emptyState" style="display:none;">
-
-        <i class="fas fa-users-slash"></i>
-
-        <h2>No registrations found</h2>
-
-        <p>
-            There are currently no members matching your search.
-        </p>
-
     </div>
 
-</main>
+</section>
 
-<!-- ==========================================
-    VIEW MEMBER MODAL
-========================================== -->
+<!--==================================================
+    PAGINATION
+===================================================-->
 
-<div class="modal" id="viewModal">
+<section class="pagination-section">
 
-    <div class="modal-content large">
+    <button
+        class="btn"
+        onclick="previousPage()">
 
-        <div class="modal-header">
+        <i class="fas fa-chevron-left"></i>
 
-            <h2>
+        Previous
 
-                <i class="fas fa-user"></i>
+    </button>
 
-                Member Information
+    <span
+        id="pageNumber">
 
-            </h2>
+        1 / 1
 
-            <button class="close-modal" id="closeViewModal">
+    </span>
 
-                <i class="fas fa-times"></i>
+    <button
+        class="btn"
+        onclick="nextPage()">
 
-            </button>
+        Next
 
-        </div>
+        <i class="fas fa-chevron-right"></i>
 
-        <div class="modal-body">
+    </button>
 
-            <div id="memberDetails">
+</section>
 
-                <!-- Filled by admin.js -->
+<!--==================================================
+    EMPTY STATE
+===================================================-->
 
-            </div>
+<div
+    class="empty-state"
+    id="emptyState"
+    style="display:none;">
 
-        </div>
+    <i class="fas fa-users-slash"></i>
 
-        <div class="modal-footer">
+    <h2>
 
-            <button class="btn secondary" id="closeViewButton">
+        No Members Found
 
-                Close
+    </h2>
 
-            </button>
+    <p>
+
+        There are currently no registrations matching your filters.
+
+    </p>
+
+</div>
+<!--==================================================
+    MEMBER DETAILS MODAL
+===================================================-->
+
+<div
+    class="member-modal"
+    id="memberModal">
+
+    <div class="member-modal-box">
+
+        <button
+            id="closeMemberModal"
+            class="close-modal">
+
+            <i class="fas fa-times"></i>
+
+        </button>
+
+        <div id="memberModalContent">
+
+            <!-- Filled by admin.js -->
 
         </div>
 
@@ -321,11 +618,13 @@
 
 </div>
 
-<!-- ==========================================
-    DELETE CONFIRMATION
-========================================== -->
+<!--==================================================
+    DELETE CONFIRMATION MODAL
+===================================================-->
 
-<div class="modal" id="deleteModal">
+<div
+    class="modal"
+    id="deleteModal">
 
     <div class="modal-content small">
 
@@ -335,7 +634,7 @@
 
                 <i class="fas fa-trash"></i>
 
-                Delete Member
+                Delete Registration
 
             </h2>
 
@@ -345,13 +644,17 @@
 
             <p>
 
-                Are you sure you want to permanently delete this registration?
+                Are you sure you want to permanently delete this member?
 
             </p>
 
             <p>
 
-                <strong>This action cannot be undone.</strong>
+                <strong>
+
+                    This action cannot be undone.
+
+                </strong>
 
             </p>
 
@@ -381,21 +684,151 @@
 
 </div>
 
-<!-- ==========================================
-    LOADING OVERLAY
-========================================== -->
+<!--==================================================
+    APPROVE MODAL
+===================================================-->
 
-<div class="loading-screen" id="loadingScreen">
+<div
+    class="modal"
+    id="approveModal">
 
-    <div class="loader"></div>
+    <div class="modal-content small">
 
-    <h3>Loading registrations...</h3>
+        <div class="modal-header">
+
+            <h2>
+
+                <i class="fas fa-circle-check"></i>
+
+                Approve Member
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Approve this membership registration?
+
+            </p>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btn secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+                class="btn success">
+
+                Approve
+
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
-<!-- ==========================================
+<!--==================================================
+    REJECT MODAL
+===================================================-->
+
+<div
+    class="modal"
+    id="rejectModal">
+
+    <div class="modal-content small">
+
+        <div class="modal-header">
+
+            <h2>
+
+                <i class="fas fa-ban"></i>
+
+                Reject Member
+
+            </h2>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p>
+
+                Reject this membership registration?
+
+            </p>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btn secondary">
+
+                Cancel
+
+            </button>
+
+            <button
+                class="btn danger">
+
+                Reject
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--==================================================
+    LOADING OVERLAY
+===================================================-->
+
+<div
+    class="loading-screen"
+    id="loadingScreen">
+
+    <div class="loader"></div>
+
+    <h3>
+
+        Loading Members...
+
+    </h3>
+
+    <p>
+
+        Please wait while registrations are being loaded.
+
+    </p>
+
+</div>
+
+<!--==================================================
+    TOAST NOTIFICATIONS
+===================================================-->
+
+<div
+    id="toastContainer"
+    class="toast-container">
+
+</div>
+
+<!--==================================================
     FOOTER
-========================================== -->
+===================================================-->
 
 <footer class="admin-footer">
 
@@ -405,7 +838,19 @@
 
     </p>
 
+    <span>
+
+        Membership Registration Management System v1.0
+
+    </span>
+
 </footer>
+
+</main>
+
+<!--==================================================
+    JAVASCRIPT
+===================================================-->
 
 <script src="admin.js"></script>
 

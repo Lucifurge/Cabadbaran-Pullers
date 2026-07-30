@@ -1663,6 +1663,29 @@ small{
     padding:50px;
     text-align:center;
 }
-/*==================================================
-    END OF FILE
-==================================================*/
+.loading-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.88);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:10000;
+}
+
+.loader{
+    width:60px;
+    height:60px;
+    border:6px solid rgba(255,255,255,.2);
+    border-top:6px solid #D4AF37;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+    margin-bottom:20px;
+}
+
+.loading-overlay p{
+    color:#fff;
+    font-size:20px;
+    font-weight:600;
+}

@@ -7,7 +7,7 @@
 // CONFIGURATION
 //==================================================
 
-const API_URL = "YOUR_WEB_APP_URL";
+const API_URL = "https://script.google.com/macros/s/AKfycbwC5mN2WDV9cpvpdJPc0yIxpjQomEOASYU_59E7DV1qfCucdujOfEFr-DLVzU6yvSwRrQ/exec";
 
 //==================================================
 // GLOBAL VARIABLES

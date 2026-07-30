@@ -649,102 +649,40 @@ ${selectedMember.weight || "-"}
 
 }
 
-/*==================================================
-    APPROVE MEMBER
-==================================================*/
+async function approveMember(id){
 
-function approveMember(index){
+    const formData = new FormData();
 
-    const member = getMember(index);
+    formData.append("action","approve");
+    formData.append("id",id);
 
-    if(!member) return;
 
-    const confirmApprove = confirm(
+    const response = await fetch(CONFIG.API_URL,{
+        method:"POST",
+        body:formData
+    });
 
-        `Approve ${member.firstName} ${member.lastName}?`
 
-    );
+    const result = await response.json();
 
-    if(!confirmApprove) return;
 
-    member.applicationStatus = "Approved";
+    console.log(result);
 
-    renderTable();
 
-    updateDashboard();
+    if(result.success){
 
-    alert("Member approved.\n\n(Backend will be connected later)");
+        alert("Member approved successfully!");
 
-}
+        loadMembers();
 
-/*==================================================
-    REJECT MEMBER
-==================================================*/
+    }
+    else{
 
-function rejectMember(index){
+        alert(result.message);
 
-    const member = getMember(index);
-
-    if(!member) return;
-
-    const confirmReject = confirm(
-
-        `Reject ${member.firstName} ${member.lastName}?`
-
-    );
-
-    if(!confirmReject) return;
-
-    member.applicationStatus = "Rejected";
-
-    renderTable();
-
-    updateDashboard();
-
-    alert("Member rejected.\n\n(Backend will be connected later)");
+    }
 
 }
-
-/*==================================================
-    DELETE MEMBER
-==================================================*/
-
-function deleteMember(index){
-
-    const member = getMember(index);
-
-    if(!member) return;
-
-    const confirmDelete = confirm(
-
-`DELETE THIS MEMBER?
-
-${member.firstName} ${member.lastName}
-
-This cannot be undone.`);
-
-    if(!confirmDelete) return;
-
-    members = members.filter(
-
-        m => m !== member
-
-    );
-
-    filteredMembers = filteredMembers.filter(
-
-        m => m !== member
-
-    );
-
-    renderTable();
-
-    updateDashboard();
-
-    alert("Member removed locally.\n\n(Backend will be connected later)");
-
-}
-
 /*==================================================
     EXPORT CSV
 ==================================================*/
@@ -1501,7 +1439,7 @@ onclick="viewMember(${((currentPage-1)*ROWS_PER_PAGE)+index})">
 
 <button
 class="action-btn approve"
-onclick="approveMember(${((currentPage-1)*ROWS_PER_PAGE)+index})">
+onclick="approveMember('${member.athleteId}')">
 
 <i class="fas fa-check"></i>
 

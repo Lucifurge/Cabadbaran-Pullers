@@ -13,7 +13,95 @@ const CONFIG = {
     API_URL: "https://script.google.com/macros/s/AKfycbzr3fw81KUxG4MLThoQZEhLMOFRugizANgBfTylX7zBL5Detnh9kMZGkjkgVfmTWM6u3w/exec"
 
 };
+function normalizeMember(member){
 
+    return {
+
+        athleteId: member.AthleteID || "",
+
+        dateRegistered: member.Timestamp || "",
+
+        firstName: member.FirstName || "",
+
+        middleName: member.MiddleName || "",
+
+        lastName: member.LastName || "",
+
+        birthday: member.Birthday || "",
+
+        age: member.Age || "",
+
+        gender: member.Gender || "",
+
+        email: member.Email || "",
+
+        phone: member.Phone || "",
+
+        facebook: member.Facebook || "",
+
+        address: member.Address || "",
+
+
+        // Emergency
+
+        emergencyName: member.EmergencyName || "",
+
+        relationship: member.Relationship || "",
+
+        emergencyPhone: member.EmergencyPhone || "",
+
+        bloodType: member.BloodType || "",
+
+        emergencyAddress: member.EmergencyAddress || "",
+
+
+        // Medical
+
+        medicalConditions: member.MedicalConditions || "",
+
+        allergies: member.Allergies || "",
+
+        emergencyNotes: member.EmergencyNotes || "",
+
+
+        // Arm Wrestling
+
+        experience: member.ExperienceLevel || "",
+
+        dominantHand: member.DominantHand || "",
+
+        competitionArm: member.CompetitionArm || "",
+
+        weight: member.Weight || "",
+
+        height: member.Height || "",
+
+        weightClass: member.WeightClass || "",
+
+        club: member.Club || "",
+
+        yearsExperience: member.YearsExperience || "",
+
+        competitions: member.Competitions || "",
+
+        achievements: member.Achievements || "",
+
+        motivation: member.Motivation || "",
+
+
+        // Membership
+
+        membership: member.Membership || "",
+
+        paymentStatus: member.PaymentStatus || "",
+
+        applicationStatus: member.ApplicationStatus || "",
+
+        verified: member.Verified || ""
+
+    };
+
+}
 /*==================================================
     GLOBAL VARIABLES
 ==================================================*/
@@ -116,9 +204,9 @@ async function loadMembers(){
 
         }
 
-        members = result.data || [];
+       members = (result.data || []).map(normalizeMember);
 
-        filteredMembers = [...members];
+filteredMembers = [...members];
 
         updateDashboard();
 
@@ -282,7 +370,7 @@ function renderTable(){
 
             <td>${index+1}</td>
 
-            <td>${member.athleteId || "-"}</td>
+           <td>${member.athleteId || "-"}</td>
 
             <td>${formatDate(member.dateRegistered)}</td>
 
@@ -1334,6 +1422,7 @@ renderTable = function(){
     let html="";
 
     paginatedMembers().forEach((member,index)=>{
+        console.log(member);
 
         html+=`
 

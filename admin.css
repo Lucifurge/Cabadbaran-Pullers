@@ -1636,4 +1636,133 @@ mark{
 
     }
 
+}/* =========================================
+   RESPONSIVE ADMIN PANEL FIX
+========================================= */
+
+.admin-content{
+    width:100%;
+    min-width:0;
+}
+
+
+/* TABLE RESPONSIVE */
+
+.table-container,
+.members-table-container{
+    width:100%;
+    overflow-x:auto;
+}
+
+
+table{
+    width:100%;
+    min-width:1200px;
+    border-collapse:collapse;
+}
+
+
+/* Prevent content breaking */
+
+td,
+th{
+    white-space:nowrap;
+}
+
+
+/* =========================================
+   LAPTOP / SMALL DESKTOP
+========================================= */
+
+@media(max-width:1400px){
+
+    .sidebar{
+        width:240px;
+    }
+
+
+    .main-content{
+        margin-left:240px;
+        width:calc(100% - 240px);
+    }
+
+
+    table{
+        min-width:1100px;
+    }
+
+}
+
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        position:fixed;
+        left:-260px;
+
+    }
+
+
+    .main-content{
+
+        margin-left:0;
+        width:100%;
+
+    }
+
+
+    .dashboard-card{
+
+        padding:20px;
+
+    }
+
+
+    .table-container{
+
+        overflow-x:auto;
+
+    }
+
+
+}
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px){
+
+
+    .search-container{
+
+        flex-direction:column;
+
+    }
+
+
+    .search-container input,
+    .search-container select,
+    .search-container button{
+
+        width:100%;
+
+    }
+
+
+    .members-table{
+
+        min-width:1000px;
+
+    }
+
+
 }

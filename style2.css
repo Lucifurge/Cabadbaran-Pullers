@@ -1,0 +1,164 @@
+/*==================================================
+    CABADBARAN PULLERS
+    REGISTRATION PAGE BASE LAYOUT
+==================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#080808;
+
+    color:#fff;
+
+    overflow-x:hidden;
+
+}
+
+/*==============================
+    HEADER
+==============================*/
+
+.register-header{
+
+    position:sticky;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:9999;
+
+}
+
+/*==============================
+    PAGE
+==============================*/
+
+.register-wrapper{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:60px 20px;
+
+}
+
+/*==============================
+    MAIN CARD
+==============================*/
+
+.register-card{
+
+    width:100%;
+
+    max-width:1100px;
+
+    margin:auto;
+
+}
+
+/*==============================
+    FORM
+==============================*/
+
+#registrationForm{
+
+    width:100%;
+
+}
+
+.form-step{
+
+    display:none;
+
+}
+
+.form-step.active{
+
+    display:block;
+
+}
+
+/*==============================
+    REMOVE HOMEPAGE LAYOUTS
+==============================*/
+
+main,
+section,
+.container,
+.content,
+.left,
+.right,
+.sidebar,
+.hero,
+.hero-content,
+.grid,
+.row{
+
+    all:unset;
+
+}
+
+/*==============================
+    REBUILD PAGE
+==============================*/
+
+.register-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:60px 20px;
+
+}
+
+.register-card{
+
+    width:100%;
+
+    max-width:1100px;
+
+}
+
+/*==============================
+    IMAGES
+==============================*/
+
+img{
+
+    max-width:100%;
+
+}
+
+/*==============================
+    LINKS
+==============================*/
+
+a{
+
+    text-decoration:none;
+
+}

@@ -3461,3 +3461,125 @@ textarea:focus{
         opacity:1;
     }
 }
+/*==================================================
+    MOBILE WIDTH FIX
+==================================================*/
+
+html,
+body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+}
+
+
+*{
+    max-width:100%;
+}
+
+
+.container{
+    width:92%;
+    max-width:1300px;
+    margin:auto;
+}
+
+
+/* FIX HEADER MOBILE */
+.header{
+    width:100%;
+    left:0;
+    right:0;
+}
+
+
+.header .container{
+    width:92%;
+}
+
+
+
+/* FIX IMAGES */
+img{
+    max-width:100%;
+    height:auto;
+}
+
+
+
+/* FIX SLIDER OVERFLOW */
+.shirt-slider{
+    width:100%;
+    overflow:hidden;
+}
+
+
+.slide{
+    width:100%;
+}
+
+
+
+/* FIX HERO PARALLAX */
+.hero-image img{
+    max-width:100%;
+}
+
+
+
+/* MOBILE */
+@media(max-width:768px){
+
+
+    section{
+        overflow:hidden;
+    }
+
+
+    .container{
+        width:90%;
+    }
+
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+
+    .hero{
+        padding-top:120px;
+    }
+
+
+    .hero-stats{
+        grid-template-columns:1fr;
+    }
+
+
+    .statistics-grid{
+        grid-template-columns:1fr;
+    }
+
+
+    .header .container{
+        height:80px;
+    }
+
+
+    .logo img{
+        width:50px;
+        height:50px;
+    }
+
+
+    .logo h2{
+        font-size:.9rem;
+    }
+
+
+    .logo span{
+        font-size:.65rem;
+    }
+
+
+}

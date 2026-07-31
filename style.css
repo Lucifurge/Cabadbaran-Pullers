@@ -2929,25 +2929,18 @@ textarea:focus{
 
     }
 
-    nav{
-
-        position:fixed;
-
-        top:90px;
-
-        left:-100%;
-
-        width:100%;
-
-        background:#0d0d0d;
-
-        transition:.4s;
-
-        padding:40px;
-
-        border-top:1px solid rgba(255,255,255,.08);
-
-    }
+   nav{
+    position:fixed;
+    top:90px;
+    left:-100%;
+    width:100%;
+    height:calc(100vh - 90px);
+    overflow-y:auto;
+    background:#0d0d0d;
+    transition:.4s;
+    padding:40px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
 
     nav.active{
 
@@ -2976,6 +2969,16 @@ textarea:focus{
         display:none;
 
     }
+    .mobile-register{
+    display:block;
+    margin-top:25px;
+}
+
+.mobile-register .btn-primary{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
 
 }
 

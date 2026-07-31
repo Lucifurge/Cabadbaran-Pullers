@@ -3,6 +3,9 @@
 // ADMIN DASHBOARD
 // ==========================================
 
+// CHANGE THIS
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyivO8NTWJ4xjCM3cBcG1lTLAtsM3VpJaPpQSEtXKjUay-COyLYQ0W-zwSiKZymwtqi3Q/exec";
+
 const attendanceBody = document.getElementById("attendanceBody");
 
 const totalMembers = document.getElementById("totalMembers");
@@ -15,11 +18,31 @@ const refreshBtn = document.getElementById("refreshBtn");
 // LOAD ATTENDANCE
 // ==========================================
 
-function loadAttendance() {
+async function loadAttendance() {
 
-    google.script.run
-        .withSuccessHandler(showAttendance)
-        .getAttendance();
+    try {
+
+        const response = await fetch(
+            SCRIPT_URL + "?action=attendance"
+        );
+
+        const data = await response.json();
+
+        showAttendance(data);
+
+    } catch (err) {
+
+        console.error(err);
+
+        attendanceBody.innerHTML = `
+            <tr>
+                <td colspan="5" class="loading">
+                    Unable to load attendance.
+                </td>
+            </tr>
+        `;
+
+    }
 
 }
 
@@ -53,55 +76,41 @@ function showAttendance(data) {
 
         const statusClass =
             record.status === "Checked"
-            ? "checked-status"
-            : "pending-status";
+                ? "checked-status"
+                : "pending-status";
 
         const actionButton =
             record.status === "Pending"
-            ? `
-                <button
-                    class="action-btn btn-check"
+                ? `<button class="action-btn btn-check"
                     onclick="markChecked(${record.row})">
-
                     Check
-
-                </button>
-            `
-            : `
-                <button
-                    class="action-btn btn-pending"
+                </button>`
+                : `<button class="action-btn btn-pending"
                     onclick="markPending(${record.row})">
-
                     Pending
-
-                </button>
-            `;
+                </button>`;
 
         attendanceBody.innerHTML += `
 
-            <tr>
+        <tr>
 
-                <td>${record.name}</td>
+            <td>${record.name}</td>
 
-                <td>${record.date}</td>
+            <td>${record.date}</td>
 
-                <td>${record.time}</td>
+            <td>${record.time}</td>
 
-                <td>
+            <td>
+                <span class="status ${statusClass}">
+                    ${record.status}
+                </span>
+            </td>
 
-                    <span class="status ${statusClass}">
-                        ${record.status}
-                    </span>
+            <td>
+                ${actionButton}
+            </td>
 
-                </td>
-
-                <td>
-
-                    ${actionButton}
-
-                </td>
-
-            </tr>
+        </tr>
 
         `;
 
@@ -113,11 +122,23 @@ function showAttendance(data) {
 // MARK CHECKED
 // ==========================================
 
-function markChecked(row) {
+async function markChecked(row) {
 
-    google.script.run
-        .withSuccessHandler(loadAttendance)
-        .markChecked(row);
+    await fetch(SCRIPT_URL, {
+
+        method: "POST",
+
+        body: JSON.stringify({
+
+            action: "checked",
+
+            row: row
+
+        })
+
+    });
+
+    loadAttendance();
 
 }
 
@@ -125,11 +146,23 @@ function markChecked(row) {
 // MARK PENDING
 // ==========================================
 
-function markPending(row) {
+async function markPending(row) {
 
-    google.script.run
-        .withSuccessHandler(loadAttendance)
-        .markPending(row);
+    await fetch(SCRIPT_URL, {
+
+        method: "POST",
+
+        body: JSON.stringify({
+
+            action: "pending",
+
+            row: row
+
+        })
+
+    });
+
+    loadAttendance();
 
 }
 

@@ -4,7 +4,7 @@
 // ===============================
 
 // CHANGE THIS LATER
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyivO8NTWJ4xjCM3cBcG1lTLAtsM3VpJaPpQSEtXKjUay-COyLYQ0W-zwSiKZymwtqi3Q/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3J1dEmkq4Qwwut65j06beWb6qsKXUOz9zWHCuVcQddH-VLrGkhOMt0kythCeOb7GbAw/exec";
 
 const form = document.getElementById("attendanceForm");
 const nameInput = document.getElementById("fullname");

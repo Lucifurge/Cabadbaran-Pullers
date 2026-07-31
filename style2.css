@@ -99,25 +99,6 @@ body{
 
 }
 
-/*==============================
-    REMOVE HOMEPAGE LAYOUTS
-==============================*/
-
-main,
-section,
-.container,
-.content,
-.left,
-.right,
-.sidebar,
-.hero,
-.hero-content,
-.grid,
-.row{
-
-    all:unset;
-
-}
 
 /*==============================
     REBUILD PAGE
@@ -160,5 +141,149 @@ img{
 a{
 
     text-decoration:none;
+
+}
+/*==================================================
+    MOBILE OVERFLOW FIX
+==================================================*/
+
+html,
+body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+}
+
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+}
+
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+
+/* MAIN WRAPPER FIX */
+
+.register-wrapper{
+
+    width:100%;
+    max-width:100%;
+
+    padding-left:15px;
+    padding-right:15px;
+
+    overflow:hidden;
+
+}
+
+
+.register-card{
+
+    width:100%;
+    max-width:1100px;
+
+}
+
+
+/* HEADER FIX */
+
+.register-header{
+
+    width:100%;
+    max-width:100%;
+
+    overflow:hidden;
+
+}
+
+
+.register-header .logo{
+
+    max-width:100%;
+
+}
+
+
+/* FORM FIX */
+
+#registrationForm{
+
+    width:100%;
+    max-width:100%;
+
+}
+
+
+input,
+select,
+textarea,
+button{
+
+    max-width:100%;
+
+}
+
+
+/* GRID FIX */
+
+.grid-2,
+.grid-3,
+.membership-grid{
+
+    max-width:100%;
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+
+    .register-wrapper{
+
+        padding:30px 12px;
+
+    }
+
+
+    .register-card{
+
+        width:100%;
+
+    }
+
+
+    .grid-2,
+    .grid-3,
+    .membership-grid{
+
+        display:block;
+
+    }
+
+
+    .input-group{
+
+        width:100%;
+
+        margin-bottom:20px;
+
+    }
+
+
+    .register-header{
+
+        padding:0 15px;
+
+    }
+
 
 }

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cabadbaran Pullers | Attendance Dashboard</title>
+
+    <link rel="stylesheet" href="timeadmin.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <h1>
+            <i class="fa-solid fa-users"></i>
+            Attendance Dashboard
+        </h1>
+
+        <p>
+            Cabadbaran Pullers Club
+        </p>
+
+    </header>
+
+    <!-- Statistics -->
+
+    <div class="cards">
+
+        <div class="card total">
+
+            <h3>Total Today</h3>
+
+            <h1 id="totalMembers">0</h1>
+
+        </div>
+
+        <div class="card pending">
+
+            <h3>Pending</h3>
+
+            <h1 id="pendingMembers">0</h1>
+
+        </div>
+
+        <div class="card checked">
+
+            <h3>Checked</h3>
+
+            <h1 id="checkedMembers">0</h1>
+
+        </div>
+
+    </div>
+
+    <!-- Refresh -->
+
+    <div class="toolbar">
+
+        <button id="refreshBtn">
+
+            <i class="fa-solid fa-rotate"></i>
+
+            Refresh
+
+        </button>
+
+    </div>
+
+    <!-- Attendance Table -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Name</th>
+
+                    <th>Date</th>
+
+                    <th>Time</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="attendanceBody">
+
+                <tr>
+
+                    <td colspan="5" class="loading">
+
+                        Loading attendance...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="timeadmin.js"></script>
+
+</body>
+
+</html>

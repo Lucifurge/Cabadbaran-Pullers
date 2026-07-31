@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabadbaran Pullers | Time In</title>
+
+    <link rel="stylesheet" href="timein.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Logo -->
+        <div class="logo-section">
+            <img src="logo.png" alt="Cabadbaran Pullers Logo">
+        </div>
+
+        <!-- Card -->
+        <div class="attendance-card">
+
+            <h1>Member Attendance</h1>
+
+            <p class="subtitle">
+                Scan the QR code at the gym, enter your full name,
+                and tap <strong>Time In</strong>.
+            </p>
+
+            <form id="attendanceForm">
+
+                <!-- Name -->
+                <div class="input-group">
+
+                    <label>
+                        <i class="fa-solid fa-user"></i>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullname"
+                        placeholder="Enter your full name"
+                        autocomplete="off"
+                        required>
+
+                </div>
+
+                <!-- Date -->
+                <div class="input-group">
+
+                    <label>
+                        <i class="fa-solid fa-calendar"></i>
+                        Date
+                    </label>
+
+                    <input
+                        type="text"
+                        id="date"
+                        readonly>
+
+                </div>
+
+                <!-- Time -->
+                <div class="input-group">
+
+                    <label>
+                        <i class="fa-solid fa-clock"></i>
+                        Time
+                    </label>
+
+                    <input
+                        type="text"
+                        id="time"
+                        readonly>
+
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn-timein">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Time In
+
+                </button>
+
+            </form>
+
+            <div id="message"></div>
+
+        </div>
+
+    </div>
+
+    <script src="timein.js"></script>
+
+</body>
+</html>

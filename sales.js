@@ -1,6 +1,7 @@
 /*==================================================
  CABADBARAN PULLERS
- SALES SYSTEM WITH GOOGLE SHEETS
+ SALES MANAGEMENT SYSTEM
+ GOOGLE SHEETS CONNECTED
 ==================================================*/
 
 
@@ -13,26 +14,44 @@ const SELLING_PRICE = 380;
 
 const COST_PRICE = 300;
 
-const PROFIT = 80;
+const PROFIT_PER_SHIRT = 80;
 
 
 
-let sales=[];
+let sales = [];
 
+
+
+
+
+/*==================================================
+ START
+==================================================*/
 
 
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
 
+
 loadSales();
 
-document
-.getElementById("saleForm")
-.addEventListener(
+
+
+const form =
+document.getElementById("saleForm");
+
+
+if(form){
+
+form.addEventListener(
 "submit",
 addSale
 );
+
+}
+
+
 
 });
 
@@ -40,9 +59,11 @@ addSale
 
 
 
-/*=====================================
- LOAD SALES
-=====================================*/
+
+
+/*==================================================
+ LOAD SALES FROM SHEET
+==================================================*/
 
 
 async function loadSales(){
@@ -51,37 +72,52 @@ async function loadSales(){
 try{
 
 
-let response =
+const response =
 await fetch(
 SALES_API+
-"?action=sales"
+"?action=sales&t="+Date.now()
 );
 
 
 
-let result =
+const result =
 await response.json();
 
 
 
-sales=result.data || [];
+console.log(result);
+
+
+
+sales =
+result.data || [];
 
 
 
 displaySales();
 
+
 updateDashboard();
 
 
 
-}catch(error){
+}
 
-console.error(error);
+catch(error){
+
+
+console.error(
+"LOAD ERROR:",
+error
+);
+
 
 alert(
 "Unable to load sales"
 );
 
+
+
 }
 
 
@@ -95,9 +131,9 @@ alert(
 
 
 
-/*=====================================
+/*==================================================
  ADD SALE
-=====================================*/
+==================================================*/
 
 
 async function addSale(e){
@@ -107,37 +143,44 @@ e.preventDefault();
 
 
 
-let quantity =
+const quantity =
 Number(
 document.getElementById("quantity").value
 );
 
 
 
-let profit =
-quantity * PROFIT;
+const profit =
+quantity *
+PROFIT_PER_SHIRT;
 
 
 
-let commissionRate =
+
+const commissionRate =
 Number(
 document.getElementById("commission").value
 );
 
 
 
-let commission =
+const commission =
 profit *
-(commissionRate/100);
+(
+commissionRate / 100
+);
 
 
 
-let income =
-profit - commission;
+const ownerIncome =
+profit -
+commission;
 
 
 
-let data={
+
+
+const data = {
 
 
 action:"addSale",
@@ -155,32 +198,41 @@ product:
 document.getElementById("product").value,
 
 
+quantity:
 quantity,
 
 
 seller:
 document.getElementById("seller").value
-||"Owner",
+||
+"Owner",
 
 
 
 sellingPrice:
-quantity * SELLING_PRICE,
+quantity *
+SELLING_PRICE,
 
 
 
 cost:
-quantity * COST_PRICE,
+quantity *
+COST_PRICE,
 
 
 
+profit:
 profit,
 
 
+
+commission:
 commission,
 
 
-income,
+
+income:
+ownerIncome,
 
 
 
@@ -198,18 +250,38 @@ document.getElementById("payment").value
 try{
 
 
+const response =
 await fetch(
 SALES_API,
 {
 
+
 method:"POST",
+
+
+headers:{
+
+"Content-Type":
+"text/plain;charset=utf-8"
+
+},
+
 
 body:
 JSON.stringify(data)
 
-}
 
-);
+
+});
+
+
+
+const result =
+await response.json();
+
+
+
+console.log(result);
 
 
 
@@ -230,30 +302,42 @@ loadSales();
 
 
 }
+
+
+
 catch(error){
 
-console.error(error);
+
+console.error(
+"POST ERROR:",
+error
+);
+
+
 
 alert(
 "Error saving sale"
 );
 
 
-}
-
 
 }
 
 
 
+}
 
 
 
 
 
-/*=====================================
- DISPLAY
-=====================================*/
+
+
+
+
+/*==================================================
+ DISPLAY SALES TABLE
+==================================================*/
 
 
 function displaySales(){
@@ -265,12 +349,21 @@ document.getElementById(
 );
 
 
+
+if(!table)
+return;
+
+
+
 table.innerHTML="";
+
+
 
 
 
 sales.forEach(
 sale=>{
+
 
 
 table.innerHTML += `
@@ -280,55 +373,63 @@ table.innerHTML += `
 
 
 <td>
-${sale.Date}
+${sale.Date || ""}
 </td>
 
 
 <td>
-${sale.Buyer}
+${sale.Buyer || ""}
 </td>
 
 
 <td>
-${sale.Product}
+${sale.Product || ""}
 </td>
 
 
 <td>
-${sale.Quantity}
+${sale.Quantity || 0}
 </td>
 
 
 <td>
-${sale.Seller}
+${sale.Seller || ""}
 </td>
 
 
 <td>
-₱${sale.Sales}
+₱${Number(
+sale.SellingPrice || 0
+).toLocaleString()}
 </td>
 
 
 <td>
-₱${sale.Profit}
+₱${Number(
+sale.Profit || 0
+).toLocaleString()}
 </td>
 
 
 <td>
-₱${sale.Commission}
+₱${Number(
+sale.Commission || 0
+).toLocaleString()}
 </td>
 
 
 <td>
-₱${sale.Income}
+₱${Number(
+sale.OwnerIncome || 0
+).toLocaleString()}
 </td>
-
 
 
 </tr>
 
 
 `;
+
 
 
 });
@@ -343,21 +444,25 @@ ${sale.Seller}
 
 
 
-/*=====================================
- DASHBOARD
-=====================================*/
+
+/*==================================================
+ DASHBOARD CALCULATIONS
+==================================================*/
 
 
 function updateDashboard(){
 
 
-let sold=0;
 
-let salesTotal=0;
+let totalSold = 0;
 
-let profit=0;
+let totalSales = 0;
 
-let income=0;
+let totalProfit = 0;
+
+let totalIncome = 0;
+
+
 
 
 
@@ -365,27 +470,41 @@ sales.forEach(
 sale=>{
 
 
-sold += Number(
+
+totalSold +=
+Number(
 sale.Quantity
-);
+)
+||
+0;
 
 
 
-salesTotal += Number(
-sale.Sales
-);
+
+totalSales +=
+Number(
+sale.SellingPrice
+)
+||
+0;
 
 
 
-profit += Number(
+totalProfit +=
+Number(
 sale.Profit
-);
+)
+||
+0;
 
 
 
-income += Number(
-sale.Income
-);
+totalIncome +=
+Number(
+sale.OwnerIncome
+)
+||
+0;
 
 
 
@@ -393,41 +512,65 @@ sale.Income
 
 
 
-document
-.getElementById(
+
+
+
+const sold =
+document.getElementById(
 "totalSold"
-)
-.innerHTML=sold;
+);
 
 
 
-document
-.getElementById(
+const revenue =
+document.getElementById(
 "totalRevenue"
-)
-.innerHTML=
-"₱"+
-salesTotal.toLocaleString();
+);
 
 
 
-document
-.getElementById(
+const profit =
+document.getElementById(
 "totalProfit"
-)
-.innerHTML=
-"₱"+
-profit.toLocaleString();
+);
 
 
 
-document
-.getElementById(
+const income =
+document.getElementById(
 "netIncome"
-)
-.innerHTML=
+);
+
+
+
+
+
+
+if(sold)
+sold.innerHTML =
+totalSold;
+
+
+
+if(revenue)
+revenue.innerHTML =
 "₱"+
-income.toLocaleString();
+totalSales.toLocaleString();
+
+
+
+if(profit)
+profit.innerHTML =
+"₱"+
+totalProfit.toLocaleString();
+
+
+
+if(income)
+income.innerHTML =
+"₱"+
+totalIncome.toLocaleString();
+
 
 
 }

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+Cabadbaran Pullers Sales Dashboard
+</title>
+
+
+<link rel="stylesheet" href="sales.css">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================= -->
+<!-- HEADER -->
+<!-- ========================================= -->
+
+
+<header class="sales-header">
+
+
+<div class="logo">
+
+<img src="logo.png">
+
+<div>
+
+<h2>
+CABADBARAN PULLERS
+</h2>
+
+<span>
+MERCH SALES SYSTEM
+</span>
+
+</div>
+
+</div>
+
+
+<a href="index.html">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Website
+
+</a>
+
+
+</header>
+
+
+
+
+
+<!-- ========================================= -->
+<!-- DASHBOARD -->
+<!-- ========================================= -->
+
+
+<main class="dashboard">
+
+
+
+<h1>
+
+<i class="fa-solid fa-chart-line"></i>
+
+Sales Dashboard
+
+</h1>
+
+
+
+<!-- STATS -->
+
+
+<section class="stats-grid">
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-shirt"></i>
+
+<div>
+
+<h2 id="totalSold">
+0
+</h2>
+
+<p>
+Jerseys Sold
+</p>
+
+</div>
+
+</div>
+
+
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-peso-sign"></i>
+
+<div>
+
+<h2 id="totalRevenue">
+₱0
+</h2>
+
+<p>
+Total Sales
+</p>
+
+</div>
+
+</div>
+
+
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-coins"></i>
+
+<div>
+
+<h2 id="totalProfit">
+₱0
+</h2>
+
+<p>
+Gross Income
+</p>
+
+</div>
+
+</div>
+
+
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<div>
+
+<h2 id="netIncome">
+₱0
+</h2>
+
+<p>
+Your Income
+</p>
+
+</div>
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+<!-- ========================================= -->
+<!-- ADD SALE -->
+<!-- ========================================= -->
+
+
+<section class="panel">
+
+
+<h2>
+
+<i class="fa-solid fa-cart-plus"></i>
+
+Add New Sale
+
+</h2>
+
+
+
+<form id="saleForm">
+
+
+
+<div class="input-group">
+
+<label>
+Buyer Name
+</label>
+
+<input 
+type="text"
+id="buyer"
+placeholder="Customer name"
+required>
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Contact Number
+</label>
+
+<input 
+type="text"
+id="contact"
+placeholder="Phone number">
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Product
+</label>
+
+
+<select id="product">
+
+
+<option>
+Official Jersey Frontier
+</option>
+
+
+<option>
+Official Jersey Golden Rev Frontier
+</option>
+
+
+<option>
+Official Jersey Black Noir
+</option>
+
+
+<option>
+Competition HighAce Edition
+</option>
+
+
+<option>
+Premium Cabadbaranon Edition
+</option>
+
+
+<option>
+Golden Haven CP Edition
+</option>
+
+
+<option>
+Royal Void CP Edition
+</option>
+
+
+<option>
+Classic RS Development Edition
+</option>
+
+
+<option>
+Limited Midnight Fury RS Development Edition
+</option>
+
+
+</select>
+
+</div>
+
+
+
+
+
+
+<div class="input-row">
+
+
+
+<div class="input-group">
+
+<label>
+Quantity
+</label>
+
+
+<input
+type="number"
+id="quantity"
+value="1"
+min="1">
+
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Seller Name
+</label>
+
+
+<input
+type="text"
+id="seller"
+placeholder="Who sold this?">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Commission
+</label>
+
+
+<select id="commission">
+
+
+<option value="0">
+No Commission
+</option>
+
+
+<option value="10">
+10% Seller Commission
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Payment Status
+</label>
+
+
+<select id="payment">
+
+
+<option>
+Paid
+</option>
+
+
+<option>
+Pending
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<button type="submit">
+
+
+<i class="fa-solid fa-plus"></i>
+
+Record Sale
+
+
+</button>
+
+
+
+
+</form>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ========================================= -->
+<!-- SALES RECORDS -->
+<!-- ========================================= -->
+
+
+<section class="panel">
+
+
+<h2>
+
+<i class="fa-solid fa-table"></i>
+
+Sales Records
+
+</h2>
+
+
+
+<div class="table-container">
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+Date
+</th>
+
+<th>
+Buyer
+</th>
+
+<th>
+Product
+</th>
+
+<th>
+Qty
+</th>
+
+<th>
+Seller
+</th>
+
+<th>
+Sales
+</th>
+
+<th>
+Profit
+</th>
+
+<th>
+Commission
+</th>
+
+<th>
+Income
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody id="salesTable">
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+</main>
+
+
+
+
+
+<script src="sales.js"></script>
+
+
+</body>
+
+</html>

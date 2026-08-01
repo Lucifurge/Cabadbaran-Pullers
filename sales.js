@@ -4,13 +4,15 @@
 ==================================================*/
 
 
-const SALES_API =
-"https://script.google.com/macros/s/AKfycbwhtODGCIK6LGhIrwJGv--GXAMTXbWZf9ewUr4fSLG4ktF0LSmzNiIop6sjlo3UboGcYw/exec";
+const SALES_API = 
+"https://script.google.com/macros/s/AKfycbyq8a0q2v5KPgizwrzFxm4QAq4MMPBbO-lIUrIW5strRIPheUQrinQq32GIs03kk24AOw/exec";
+
 
 
 const SELLING_PRICE = 380;
-const COST_PRICE = 300;
-const PROFIT_PER_SHIRT = 80;
+const PRODUCT_COST = 300;
+const PROFIT = 80;
+
 
 
 let sales = [];
@@ -19,9 +21,11 @@ let sales = [];
 
 
 
+
 /*==================================================
- START
+ START SYSTEM
 ==================================================*/
+
 
 document.addEventListener(
 "DOMContentLoaded",
@@ -29,6 +33,7 @@ document.addEventListener(
 
 
 loadSales();
+
 
 
 const form =
@@ -52,6 +57,8 @@ addSale
 
 
 
+
+
 /*==================================================
  LOAD SALES
 ==================================================*/
@@ -63,11 +70,9 @@ async function loadSales(){
 try{
 
 
-const response = await fetch(
-
-SALES_API +
-"?action=sales"
-
+const response =
+await fetch(
+SALES_API + "?action=sales"
 );
 
 
@@ -78,20 +83,13 @@ await response.json();
 
 
 console.log(
-"API RESPONSE:",
+"SALES:",
 result
 );
 
 
 
-if(!result.success){
-
-throw new Error(
-result.message
-);
-
-}
-
+if(result.success){
 
 
 sales =
@@ -101,7 +99,12 @@ result.data || [];
 
 displaySales();
 
+
 updateDashboard();
+
+
+
+}
 
 
 
@@ -111,13 +114,14 @@ catch(error){
 
 
 console.error(
-"LOAD ERROR:",
+"LOAD SALES ERROR:",
 error
 );
 
 
+
 alert(
-"Unable to load sales\n"+error.message
+"Unable to load sales"
 );
 
 
@@ -147,6 +151,7 @@ e.preventDefault();
 
 
 
+
 const quantity =
 Number(
 document.getElementById("quantity").value
@@ -155,8 +160,7 @@ document.getElementById("quantity").value
 
 
 const profit =
-quantity *
-PROFIT_PER_SHIRT;
+quantity * PROFIT;
 
 
 
@@ -175,9 +179,10 @@ commissionRate / 100
 
 
 
-const income =
+const ownerIncome =
 profit -
 commission;
+
 
 
 
@@ -201,6 +206,7 @@ product:
 document.getElementById("product").value,
 
 
+quantity:
 quantity,
 
 
@@ -211,10 +217,34 @@ document.getElementById("seller").value
 
 
 
+sellingPrice:
+quantity *
+SELLING_PRICE,
+
+
+
+productCost:
+quantity *
+PRODUCT_COST,
+
+
+
+profit:
+profit,
+
+
+
+commission:
 commission,
 
 
-payment:
+
+ownerIncome:
+ownerIncome,
+
+
+
+paymentStatus:
 document.getElementById("payment").value
 
 
@@ -231,30 +261,19 @@ try{
 
 const response =
 await fetch(
-
 SALES_API,
-
 {
 
+
 method:"POST",
-
-
-headers:{
-
-
-"Content-Type":
-"text/plain;charset=utf-8"
-
-
-},
 
 
 body:
 JSON.stringify(data)
 
 
-}
 
+}
 );
 
 
@@ -264,7 +283,9 @@ await response.json();
 
 
 
-console.log(result);
+console.log(
+result
+);
 
 
 
@@ -272,7 +293,7 @@ if(result.success){
 
 
 alert(
-"Sale Added Successfully"
+"Sale Recorded Successfully"
 );
 
 
@@ -287,14 +308,7 @@ loadSales();
 
 
 
-}else{
-
-
-alert(result.message);
-
-
 }
-
 
 
 
@@ -304,14 +318,16 @@ catch(error){
 
 
 console.error(
-"POST ERROR:",
+"ADD SALE ERROR:",
 error
 );
 
 
+
 alert(
-"Error saving sale"
+"Failed to save sale"
 );
+
 
 
 }
@@ -364,21 +380,26 @@ table.innerHTML += `
 ${sale.Date || ""}
 </td>
 
+
 <td>
 ${sale.Buyer || ""}
 </td>
+
 
 <td>
 ${sale.Product || ""}
 </td>
 
+
 <td>
 ${sale.Quantity || 0}
 </td>
 
+
 <td>
 ${sale.Seller || ""}
 </td>
+
 
 <td>
 ₱${Number(
@@ -386,11 +407,13 @@ sale.SellingPrice || 0
 ).toLocaleString()}
 </td>
 
+
 <td>
 ₱${Number(
 sale.Profit || 0
 ).toLocaleString()}
 </td>
+
 
 <td>
 ₱${Number(
@@ -398,17 +421,22 @@ sale.Commission || 0
 ).toLocaleString()}
 </td>
 
+
 <td>
 ₱${Number(
 sale.OwnerIncome || 0
 ).toLocaleString()}
 </td>
 
+
 </tr>
 
 `;
 
+
+
 });
+
 
 
 }
@@ -429,13 +457,14 @@ sale.OwnerIncome || 0
 function updateDashboard(){
 
 
-let sold=0;
+let totalSold = 0;
 
-let revenue=0;
+let totalSales = 0;
 
-let profit=0;
+let totalProfit = 0;
 
-let income=0;
+let totalIncome = 0;
+
 
 
 
@@ -443,24 +472,32 @@ sales.forEach(
 sale=>{
 
 
-sold += Number(
+totalSold +=
+Number(
 sale.Quantity
-)||0;
+) || 0;
 
 
-revenue += Number(
+
+totalSales +=
+Number(
 sale.SellingPrice
-)||0;
+) || 0;
 
 
-profit += Number(
+
+totalProfit +=
+Number(
 sale.Profit
-)||0;
+) || 0;
 
 
-income += Number(
+
+totalIncome +=
+Number(
 sale.OwnerIncome
-)||0;
+) || 0;
+
 
 
 });
@@ -468,30 +505,36 @@ sale.OwnerIncome
 
 
 
+
+
 document.getElementById(
 "totalSold"
-).innerHTML=sold;
+).innerHTML =
+totalSold;
 
 
 
 document.getElementById(
-"totalRevenue"
+"totalSales"
 ).innerHTML =
-"₱"+revenue.toLocaleString();
+"₱" +
+totalSales.toLocaleString();
 
 
 
 document.getElementById(
 "totalProfit"
 ).innerHTML =
-"₱"+profit.toLocaleString();
+"₱" +
+totalProfit.toLocaleString();
 
 
 
 document.getElementById(
-"netIncome"
+"ownerIncome"
 ).innerHTML =
-"₱"+income.toLocaleString();
+"₱" +
+totalIncome.toLocaleString();
 
 
 

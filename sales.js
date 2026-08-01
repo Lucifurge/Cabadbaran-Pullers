@@ -1,21 +1,16 @@
 /*==================================================
  CABADBARAN PULLERS
  SALES MANAGEMENT SYSTEM
- GOOGLE SHEETS CONNECTED
 ==================================================*/
 
 
 const SALES_API =
-"https://script.google.com/macros/s/AKfycbxff8XI4AhzTWH2QXMnxvIjnxtzev8Bbi0CVQ_qV45fWSTqH85wnoYPlFwcpPYa9mhX-Q/exec";
-
+"https://script.google.com/macros/s/AKfycbwhtODGCIK6LGhIrwJGv--GXAMTXbWZf9ewUr4fSLG4ktF0LSmzNiIop6sjlo3UboGcYw/exec";
 
 
 const SELLING_PRICE = 380;
-
 const COST_PRICE = 300;
-
 const PROFIT_PER_SHIRT = 80;
-
 
 
 let sales = [];
@@ -28,14 +23,12 @@ let sales = [];
  START
 ==================================================*/
 
-
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
 
 
 loadSales();
-
 
 
 const form =
@@ -52,7 +45,6 @@ addSale
 }
 
 
-
 });
 
 
@@ -60,9 +52,8 @@ addSale
 
 
 
-
 /*==================================================
- LOAD SALES FROM SHEET
+ LOAD SALES
 ==================================================*/
 
 
@@ -72,10 +63,11 @@ async function loadSales(){
 try{
 
 
-const response =
-await fetch(
-SALES_API+
-"?action=sales&t="+Date.now()
+const response = await fetch(
+
+SALES_API +
+"?action=sales"
+
 );
 
 
@@ -85,7 +77,20 @@ await response.json();
 
 
 
-console.log(result);
+console.log(
+"API RESPONSE:",
+result
+);
+
+
+
+if(!result.success){
+
+throw new Error(
+result.message
+);
+
+}
 
 
 
@@ -95,7 +100,6 @@ result.data || [];
 
 
 displaySales();
-
 
 updateDashboard();
 
@@ -113,16 +117,16 @@ error
 
 
 alert(
-"Unable to load sales"
+"Unable to load sales\n"+error.message
 );
 
 
-
 }
 
 
 
 }
+
 
 
 
@@ -156,7 +160,6 @@ PROFIT_PER_SHIRT;
 
 
 
-
 const commissionRate =
 Number(
 document.getElementById("commission").value
@@ -172,7 +175,7 @@ commissionRate / 100
 
 
 
-const ownerIncome =
+const income =
 profit -
 commission;
 
@@ -198,7 +201,6 @@ product:
 document.getElementById("product").value,
 
 
-quantity:
 quantity,
 
 
@@ -209,31 +211,7 @@ document.getElementById("seller").value
 
 
 
-sellingPrice:
-quantity *
-SELLING_PRICE,
-
-
-
-cost:
-quantity *
-COST_PRICE,
-
-
-
-profit:
-profit,
-
-
-
-commission:
 commission,
-
-
-
-income:
-ownerIncome,
-
 
 
 payment:
@@ -247,22 +225,26 @@ document.getElementById("payment").value
 
 
 
+
 try{
 
 
 const response =
 await fetch(
-SALES_API,
-{
 
+SALES_API,
+
+{
 
 method:"POST",
 
 
 headers:{
 
+
 "Content-Type":
 "text/plain;charset=utf-8"
+
 
 },
 
@@ -271,8 +253,9 @@ body:
 JSON.stringify(data)
 
 
+}
 
-});
+);
 
 
 
@@ -283,6 +266,9 @@ await response.json();
 
 console.log(result);
 
+
+
+if(result.success){
 
 
 alert(
@@ -301,9 +287,18 @@ loadSales();
 
 
 
+}else{
+
+
+alert(result.message);
+
+
 }
 
 
+
+
+}
 
 catch(error){
 
@@ -314,11 +309,9 @@ error
 );
 
 
-
 alert(
 "Error saving sale"
 );
-
 
 
 }
@@ -336,7 +329,7 @@ alert(
 
 
 /*==================================================
- DISPLAY SALES TABLE
+ DISPLAY SALES
 ==================================================*/
 
 
@@ -359,43 +352,33 @@ table.innerHTML="";
 
 
 
-
-
 sales.forEach(
 sale=>{
 
 
-
 table.innerHTML += `
 
-
 <tr>
-
 
 <td>
 ${sale.Date || ""}
 </td>
 
-
 <td>
 ${sale.Buyer || ""}
 </td>
-
 
 <td>
 ${sale.Product || ""}
 </td>
 
-
 <td>
 ${sale.Quantity || 0}
 </td>
 
-
 <td>
 ${sale.Seller || ""}
 </td>
-
 
 <td>
 ₱${Number(
@@ -403,13 +386,11 @@ sale.SellingPrice || 0
 ).toLocaleString()}
 </td>
 
-
 <td>
 ₱${Number(
 sale.Profit || 0
 ).toLocaleString()}
 </td>
-
 
 <td>
 ₱${Number(
@@ -417,20 +398,15 @@ sale.Commission || 0
 ).toLocaleString()}
 </td>
 
-
 <td>
 ₱${Number(
 sale.OwnerIncome || 0
 ).toLocaleString()}
 </td>
 
-
 </tr>
 
-
 `;
-
-
 
 });
 
@@ -446,23 +422,20 @@ sale.OwnerIncome || 0
 
 
 /*==================================================
- DASHBOARD CALCULATIONS
+ DASHBOARD
 ==================================================*/
 
 
 function updateDashboard(){
 
 
+let sold=0;
 
-let totalSold = 0;
+let revenue=0;
 
-let totalSales = 0;
+let profit=0;
 
-let totalProfit = 0;
-
-let totalIncome = 0;
-
-
+let income=0;
 
 
 
@@ -470,42 +443,24 @@ sales.forEach(
 sale=>{
 
 
-
-totalSold +=
-Number(
+sold += Number(
 sale.Quantity
-)
-||
-0;
+)||0;
 
 
-
-
-totalSales +=
-Number(
+revenue += Number(
 sale.SellingPrice
-)
-||
-0;
+)||0;
 
 
-
-totalProfit +=
-Number(
+profit += Number(
 sale.Profit
-)
-||
-0;
+)||0;
 
 
-
-totalIncome +=
-Number(
+income += Number(
 sale.OwnerIncome
-)
-||
-0;
-
+)||0;
 
 
 });
@@ -513,63 +468,30 @@ sale.OwnerIncome
 
 
 
-
-
-const sold =
 document.getElementById(
 "totalSold"
-);
+).innerHTML=sold;
 
 
 
-const revenue =
 document.getElementById(
 "totalRevenue"
-);
+).innerHTML =
+"₱"+revenue.toLocaleString();
 
 
 
-const profit =
 document.getElementById(
 "totalProfit"
-);
+).innerHTML =
+"₱"+profit.toLocaleString();
 
 
 
-const income =
 document.getElementById(
 "netIncome"
-);
-
-
-
-
-
-
-if(sold)
-sold.innerHTML =
-totalSold;
-
-
-
-if(revenue)
-revenue.innerHTML =
-"₱"+
-totalSales.toLocaleString();
-
-
-
-if(profit)
-profit.innerHTML =
-"₱"+
-totalProfit.toLocaleString();
-
-
-
-if(income)
-income.innerHTML =
-"₱"+
-totalIncome.toLocaleString();
+).innerHTML =
+"₱"+income.toLocaleString();
 
 
 

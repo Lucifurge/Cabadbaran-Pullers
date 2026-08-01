@@ -5,7 +5,7 @@
 
 
 const SALES_API =
-"https://script.google.com/macros/s/AKfycby470TaBZ1NSbUlUcMaoPTmubVE9uGfNLrMyJoydoOuSoXpLoo-GzCHC-doWWSuokgVWw/exec";
+"https://script.google.com/macros/s/AKfycbxvpyiHu_3enMlY3ur8y2Mfg-P18MCBP_bgilsdz7n0gFXpW0BCkPj4-lSyAvSWg2ooCA/exec";
 
 
 

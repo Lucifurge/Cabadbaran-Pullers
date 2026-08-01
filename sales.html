@@ -11,14 +11,16 @@
 Cabadbaran Pullers Sales Dashboard
 </title>
 
- <link
-        rel="icon"
-        href="logo.png">
+
+<link rel="icon" href="logo.png">
+
+
 <link rel="stylesheet" href="sales.css">
 
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+rel="stylesheet">
 
 
 </head>
@@ -27,17 +29,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 <body>
 
 
-<!-- ========================================= -->
-<!-- HEADER -->
-<!-- ========================================= -->
-
-
 <header class="sales-header">
 
 
-<div class="logo">
+<div class="brand">
+
 
 <img src="logo.png">
+
 
 <div>
 
@@ -49,9 +48,12 @@ CABADBARAN PULLERS
 MERCH SALES SYSTEM
 </span>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 
 <a href="index.html">
@@ -69,11 +71,6 @@ Website
 
 
 
-<!-- ========================================= -->
-<!-- DASHBOARD -->
-<!-- ========================================= -->
-
-
 <main class="dashboard">
 
 
@@ -88,13 +85,12 @@ Sales Dashboard
 
 
 
-<!-- STATS -->
 
 
-<section class="stats-grid">
+<section class="stats">
 
 
-<div class="stat-card">
+<div class="card">
 
 <i class="fa-solid fa-shirt"></i>
 
@@ -115,13 +111,14 @@ Jerseys Sold
 
 
 
-<div class="stat-card">
+
+<div class="card">
 
 <i class="fa-solid fa-peso-sign"></i>
 
 <div>
 
-<h2 id="totalRevenue">
+<h2 id="totalSales">
 ₱0
 </h2>
 
@@ -136,7 +133,9 @@ Total Sales
 
 
 
-<div class="stat-card">
+
+
+<div class="card">
 
 <i class="fa-solid fa-coins"></i>
 
@@ -147,7 +146,7 @@ Total Sales
 </h2>
 
 <p>
-Gross Income
+Gross Profit
 </p>
 
 </div>
@@ -157,24 +156,25 @@ Gross Income
 
 
 
-<div class="stat-card">
+
+
+<div class="card">
 
 <i class="fa-solid fa-wallet"></i>
 
 <div>
 
-<h2 id="netIncome">
+<h2 id="ownerIncome">
 ₱0
 </h2>
 
 <p>
-Your Income
+Owner Income
 </p>
 
 </div>
 
 </div>
-
 
 
 </section>
@@ -184,21 +184,16 @@ Your Income
 
 
 
-<!-- ========================================= -->
-<!-- ADD SALE -->
-<!-- ========================================= -->
 
 
 <section class="panel">
 
 
 <h2>
-
 <i class="fa-solid fa-cart-plus"></i>
-
 Add New Sale
-
 </h2>
+
 
 
 
@@ -206,42 +201,31 @@ Add New Sale
 
 
 
-<div class="input-group">
-
 <label>
 Buyer Name
 </label>
 
 <input 
-type="text"
 id="buyer"
-placeholder="Customer name"
-required>
-
-</div>
+required
+placeholder="Customer name">
 
 
 
 
-
-<div class="input-group">
 
 <label>
 Contact Number
 </label>
 
 <input 
-type="text"
 id="contact"
 placeholder="Phone number">
 
-</div>
 
 
 
 
-
-<div class="input-group">
 
 <label>
 Product
@@ -298,63 +282,53 @@ Limited Midnight Fury RS Development Edition
 
 </select>
 
-</div>
 
 
 
 
 
 
-<div class="input-row">
+<div class="two">
 
 
-
-<div class="input-group">
+<div>
 
 <label>
 Quantity
 </label>
 
-
-<input
+<input 
 type="number"
 id="quantity"
 value="1"
 min="1">
 
-
 </div>
 
 
 
 
 
-<div class="input-group">
+<div>
 
 <label>
-Seller Name
+Seller
 </label>
 
-
 <input
-type="text"
 id="seller"
-placeholder="Who sold this?">
+placeholder="Seller name">
+
+
+</div>
 
 
 </div>
 
 
 
-</div>
 
 
-
-
-
-
-
-<div class="input-group">
 
 
 <label>
@@ -366,7 +340,7 @@ Commission
 
 
 <option value="0">
-No Commission
+Owner Sale (No Commission)
 </option>
 
 
@@ -378,15 +352,9 @@ No Commission
 </select>
 
 
-</div>
 
 
 
-
-
-
-
-<div class="input-group">
 
 
 <label>
@@ -410,10 +378,6 @@ Pending
 </select>
 
 
-</div>
-
-
-
 
 
 
@@ -430,8 +394,8 @@ Record Sale
 
 
 
-
 </form>
+
 
 
 </section>
@@ -442,11 +406,6 @@ Record Sale
 
 
 
-
-
-<!-- ========================================= -->
-<!-- SALES RECORDS -->
-<!-- ========================================= -->
 
 
 <section class="panel">
@@ -462,7 +421,8 @@ Sales Records
 
 
 
-<div class="table-container">
+
+<div class="table">
 
 
 <table>
@@ -472,45 +432,26 @@ Sales Records
 
 <tr>
 
-<th>
-Date
-</th>
+<th>Date</th>
 
-<th>
-Buyer
-</th>
+<th>Buyer</th>
 
-<th>
-Product
-</th>
+<th>Product</th>
 
-<th>
-Qty
-</th>
+<th>Qty</th>
 
-<th>
-Seller
-</th>
+<th>Seller</th>
 
-<th>
-Sales
-</th>
+<th>Sales</th>
 
-<th>
-Profit
-</th>
+<th>Profit</th>
 
-<th>
-Commission
-</th>
+<th>Commission</th>
 
-<th>
-Income
-</th>
+<th>Income</th>
 
 
 </tr>
-
 
 </thead>
 
@@ -528,7 +469,6 @@ Income
 </div>
 
 
-
 </section>
 
 
@@ -537,7 +477,6 @@ Income
 
 
 </main>
-
 
 
 

@@ -1,0 +1,719 @@
+/*==================================================
+    CABADBARAN PULLERS
+    SALES DASHBOARD STYLE
+==================================================*/
+
+
+:root{
+
+    --gold:#D4AF37;
+    --gold-dark:#B68D1D;
+
+    --black:#050505;
+    --dark:#111;
+
+    --card:#171717;
+
+    --white:#fff;
+
+    --text:#bdbdbd;
+
+    --border:rgba(255,255,255,.08);
+
+    --shadow:
+    0 15px 40px rgba(0,0,0,.5);
+
+}
+
+
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+
+
+body{
+
+    min-height:100vh;
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+
+    linear-gradient(
+        rgba(0,0,0,.9),
+        rgba(0,0,0,.95)
+    ),
+
+    url("images/hero.png");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+    color:var(--white);
+
+}
+
+
+
+
+
+/*==================================================
+    HEADER
+==================================================*/
+
+
+.sales-header{
+
+    width:100%;
+
+    padding:20px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+    background:rgba(0,0,0,.9);
+
+    border-bottom:
+
+    1px solid var(--border);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:99;
+
+
+    backdrop-filter:blur(15px);
+
+}
+
+
+
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+
+.logo img{
+
+    width:60px;
+
+    height:60px;
+
+    object-fit:contain;
+
+}
+
+
+
+.logo h2{
+
+    color:var(--gold);
+
+    font-size:1.2rem;
+
+}
+
+
+
+.logo span{
+
+    color:#999;
+
+    font-size:.8rem;
+
+}
+
+
+
+
+.sales-header a{
+
+
+    text-decoration:none;
+
+    color:var(--gold);
+
+    border:2px solid var(--gold);
+
+    padding:12px 25px;
+
+    border-radius:50px;
+
+    transition:.3s;
+
+}
+
+
+
+.sales-header a:hover{
+
+
+    background:var(--gold);
+
+    color:black;
+
+}
+
+
+
+
+
+
+/*==================================================
+    DASHBOARD
+==================================================*/
+
+
+.dashboard{
+
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:50px 0;
+
+
+}
+
+
+
+
+.dashboard>h1{
+
+
+    text-align:center;
+
+    color:var(--gold);
+
+    margin-bottom:40px;
+
+    font-size:2.5rem;
+
+}
+
+
+
+
+
+
+
+/*==================================================
+    STATS
+==================================================*/
+
+
+.stats-grid{
+
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(4,1fr);
+
+
+    gap:25px;
+
+    margin-bottom:40px;
+
+
+}
+
+
+
+
+.stat-card{
+
+
+    background:var(--card);
+
+    border:
+
+    1px solid var(--border);
+
+
+    border-radius:20px;
+
+
+    padding:30px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:20px;
+
+
+    box-shadow:var(--shadow);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+.stat-card:hover{
+
+
+    transform:translateY(-5px);
+
+    border-color:var(--gold);
+
+
+}
+
+
+
+.stat-card i{
+
+
+    font-size:2.5rem;
+
+    color:var(--gold);
+
+
+}
+
+
+
+
+.stat-card h2{
+
+
+    font-size:2rem;
+
+    color:white;
+
+}
+
+
+
+.stat-card p{
+
+
+    color:var(--text);
+
+}
+
+
+
+
+
+
+/*==================================================
+    PANELS
+==================================================*/
+
+
+.panel{
+
+
+    background:var(--card);
+
+
+    border:
+
+    1px solid var(--border);
+
+
+    border-radius:25px;
+
+
+    padding:35px;
+
+
+    margin-bottom:40px;
+
+
+    box-shadow:var(--shadow);
+
+
+}
+
+
+
+.panel h2{
+
+
+    color:var(--gold);
+
+    margin-bottom:30px;
+
+}
+
+
+
+
+
+
+
+/*==================================================
+    FORM
+==================================================*/
+
+
+.input-group{
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.input-group label{
+
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+
+}
+
+
+
+
+.input-group input,
+
+.input-group select{
+
+
+    background:#0d0d0d;
+
+
+    color:white;
+
+
+    border:
+
+    2px solid rgba(255,255,255,.1);
+
+
+    padding:15px;
+
+
+    border-radius:12px;
+
+
+    outline:none;
+
+
+}
+
+
+
+.input-group input:focus,
+
+.input-group select:focus{
+
+
+    border-color:var(--gold);
+
+
+}
+
+
+
+
+
+.input-row{
+
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+
+}
+
+
+
+
+
+
+
+button{
+
+
+    width:100%;
+
+
+    padding:16px;
+
+
+    border:none;
+
+
+    border-radius:50px;
+
+
+    background:var(--gold);
+
+
+    color:black;
+
+
+    font-weight:700;
+
+
+    font-size:1rem;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+button:hover{
+
+
+    background:var(--gold-dark);
+
+
+    transform:translateY(-3px);
+
+
+}
+
+
+
+
+
+
+
+
+/*==================================================
+    TABLE
+==================================================*/
+
+
+.table-container{
+
+
+    overflow-x:auto;
+
+
+}
+
+
+
+table{
+
+
+    width:100%;
+
+
+    border-collapse:collapse;
+
+
+}
+
+
+
+thead{
+
+
+    background:#0d0d0d;
+
+
+}
+
+
+
+th{
+
+
+    padding:18px;
+
+
+    color:var(--gold);
+
+
+    text-align:left;
+
+
+}
+
+
+
+td{
+
+
+    padding:15px;
+
+
+    border-bottom:
+
+    1px solid var(--border);
+
+
+    color:#ddd;
+
+
+}
+
+
+
+tbody tr:hover{
+
+
+    background:rgba(212,175,55,.05);
+
+
+}
+
+
+
+
+
+
+
+
+/*==================================================
+    MOBILE
+==================================================*/
+
+
+@media(max-width:900px){
+
+
+    .stats-grid{
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+
+    }
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+    .sales-header{
+
+
+        padding:15px;
+
+    }
+
+
+
+    .logo h2{
+
+
+        font-size:1rem;
+
+    }
+
+
+
+    .logo img{
+
+
+        width:45px;
+
+        height:45px;
+
+    }
+
+
+
+    .dashboard{
+
+
+        width:94%;
+
+    }
+
+
+
+    .dashboard>h1{
+
+
+        font-size:1.8rem;
+
+    }
+
+
+
+    .stats-grid{
+
+
+        grid-template-columns:1fr;
+
+
+    }
+
+
+
+    .input-row{
+
+
+        grid-template-columns:1fr;
+
+
+    }
+
+
+
+    .panel{
+
+
+        padding:20px;
+
+    }
+
+
+}

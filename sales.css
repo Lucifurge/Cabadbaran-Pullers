@@ -1,27 +1,25 @@
 /*==================================================
-    CABADBARAN PULLERS
-    SALES DASHBOARD STYLE
+ CABADBARAN PULLERS
+ SALES DASHBOARD CSS
 ==================================================*/
 
 
 :root{
 
     --gold:#D4AF37;
-    --gold-dark:#B68D1D;
+    --gold-dark:#a88418;
 
     --black:#050505;
     --dark:#111;
 
-    --card:#171717;
+    --card:#151515;
 
-    --white:#fff;
+    --white:#ffffff;
 
-    --text:#bdbdbd;
+    --gray:#aaa;
 
-    --border:rgba(255,255,255,.08);
-
-    --shadow:
-    0 15px 40px rgba(0,0,0,.5);
+    --border:
+    rgba(255,255,255,.08);
 
 }
 
@@ -30,7 +28,9 @@
 *{
 
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
 
 }
@@ -39,14 +39,19 @@
 
 body{
 
+
     min-height:100vh;
 
-    font-family:'Poppins',sans-serif;
+    font-family:
+    'Poppins',
+    Arial,
+    sans-serif;
+
 
     background:
 
     linear-gradient(
-        rgba(0,0,0,.9),
+        rgba(0,0,0,.92),
         rgba(0,0,0,.95)
     ),
 
@@ -57,24 +62,31 @@ body{
 
     background-position:center;
 
-    color:var(--white);
+
+    color:white;
+
 
 }
 
 
 
-
-
 /*==================================================
-    HEADER
+ HEADER
 ==================================================*/
 
 
 .sales-header{
 
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+
     width:100%;
 
-    padding:20px 8%;
 
     display:flex;
 
@@ -83,27 +95,28 @@ body{
     align-items:center;
 
 
-    background:rgba(0,0,0,.9);
+    padding:20px 8%;
+
+
+    background:
+
+    rgba(0,0,0,.85);
+
+
+    backdrop-filter:blur(15px);
+
 
     border-bottom:
 
     1px solid var(--border);
 
-    position:sticky;
-
-    top:0;
-
-    z-index:99;
-
-
-    backdrop-filter:blur(15px);
 
 }
 
 
 
+.brand{
 
-.logo{
 
     display:flex;
 
@@ -111,11 +124,13 @@ body{
 
     gap:15px;
 
+
 }
 
 
 
-.logo img{
+.brand img{
+
 
     width:60px;
 
@@ -123,28 +138,32 @@ body{
 
     object-fit:contain;
 
+
 }
 
 
 
-.logo h2{
+.brand h2{
+
 
     color:var(--gold);
 
     font-size:1.2rem;
 
+
 }
 
 
 
-.logo span{
+.brand span{
+
 
     color:#999;
 
     font-size:.8rem;
 
-}
 
+}
 
 
 
@@ -153,15 +172,23 @@ body{
 
     text-decoration:none;
 
+
     color:var(--gold);
 
-    border:2px solid var(--gold);
+
+    border:
+
+    2px solid var(--gold);
+
 
     padding:12px 25px;
 
+
     border-radius:50px;
 
+
     transition:.3s;
+
 
 }
 
@@ -174,15 +201,15 @@ body{
 
     color:black;
 
+
 }
 
 
 
 
 
-
 /*==================================================
-    DASHBOARD
+ DASHBOARD
 ==================================================*/
 
 
@@ -191,9 +218,12 @@ body{
 
     width:90%;
 
+
     max-width:1400px;
 
+
     margin:auto;
+
 
     padding:50px 0;
 
@@ -203,16 +233,20 @@ body{
 
 
 
-.dashboard>h1{
+.dashboard h1{
 
 
     text-align:center;
 
+
     color:var(--gold);
+
+
+    font-size:2.5rem;
+
 
     margin-bottom:40px;
 
-    font-size:2.5rem;
 
 }
 
@@ -223,14 +257,15 @@ body{
 
 
 /*==================================================
-    STATS
+ STATS
 ==================================================*/
 
 
-.stats-grid{
+.stats{
 
 
     display:grid;
+
 
     grid-template-columns:
 
@@ -238,6 +273,7 @@ body{
 
 
     gap:25px;
+
 
     margin-bottom:40px;
 
@@ -247,17 +283,21 @@ body{
 
 
 
-.stat-card{
+
+.card{
 
 
-    background:var(--card);
+    background:
+
+    var(--card);
+
 
     border:
 
     1px solid var(--border);
 
 
-    border-radius:20px;
+    border-radius:25px;
 
 
     padding:30px;
@@ -272,9 +312,6 @@ body{
     gap:20px;
 
 
-    box-shadow:var(--shadow);
-
-
     transition:.3s;
 
 
@@ -283,10 +320,11 @@ body{
 
 
 
-.stat-card:hover{
+.card:hover{
 
 
     transform:translateY(-5px);
+
 
     border-color:var(--gold);
 
@@ -295,10 +333,12 @@ body{
 
 
 
-.stat-card i{
+
+.card i{
 
 
     font-size:2.5rem;
+
 
     color:var(--gold);
 
@@ -307,24 +347,24 @@ body{
 
 
 
-
-.stat-card h2{
+.card h2{
 
 
     font-size:2rem;
 
-    color:white;
 
 }
 
 
 
-.stat-card p{
+.card p{
 
 
-    color:var(--text);
+    color:var(--gray);
+
 
 }
+
 
 
 
@@ -332,14 +372,16 @@ body{
 
 
 /*==================================================
-    PANELS
+ PANELS
 ==================================================*/
 
 
 .panel{
 
 
-    background:var(--card);
+    background:
+
+    var(--card);
 
 
     border:
@@ -356,9 +398,6 @@ body{
     margin-bottom:40px;
 
 
-    box-shadow:var(--shadow);
-
-
 }
 
 
@@ -368,7 +407,9 @@ body{
 
     color:var(--gold);
 
+
     margin-bottom:30px;
+
 
 }
 
@@ -379,28 +420,28 @@ body{
 
 
 /*==================================================
-    FORM
+ FORM
 ==================================================*/
 
 
-.input-group{
+form{
 
 
     display:flex;
 
     flex-direction:column;
 
-    margin-bottom:20px;
-
 
 }
 
 
 
-.input-group label{
+
+label{
 
 
     margin-bottom:8px;
+
 
     font-weight:600;
 
@@ -409,13 +450,12 @@ body{
 
 
 
+input,
 
-.input-group input,
-
-.input-group select{
+select{
 
 
-    background:#0d0d0d;
+    background:#080808;
 
 
     color:white;
@@ -423,13 +463,16 @@ body{
 
     border:
 
-    2px solid rgba(255,255,255,.1);
+    1px solid rgba(255,255,255,.15);
 
 
     padding:15px;
 
 
     border-radius:12px;
+
+
+    margin-bottom:20px;
 
 
     outline:none;
@@ -439,9 +482,9 @@ body{
 
 
 
-.input-group input:focus,
+input:focus,
 
-.input-group select:focus{
+select:focus{
 
 
     border-color:var(--gold);
@@ -453,12 +496,18 @@ body{
 
 
 
-.input-row{
+
+
+.two{
 
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+
+    1fr 1fr;
+
 
     gap:20px;
 
@@ -469,12 +518,10 @@ body{
 
 
 
-
-
 button{
 
 
-    width:100%;
+    margin-top:10px;
 
 
     padding:16px;
@@ -527,11 +574,11 @@ button:hover{
 
 
 /*==================================================
-    TABLE
+ TABLE
 ==================================================*/
 
 
-.table-container{
+.table{
 
 
     overflow-x:auto;
@@ -557,7 +604,7 @@ table{
 thead{
 
 
-    background:#0d0d0d;
+    background:#090909;
 
 
 }
@@ -567,10 +614,10 @@ thead{
 th{
 
 
-    padding:18px;
-
-
     color:var(--gold);
+
+
+    padding:18px;
 
 
     text-align:left;
@@ -601,11 +648,12 @@ td{
 tbody tr:hover{
 
 
-    background:rgba(212,175,55,.05);
+    background:
+
+    rgba(212,175,55,.05);
 
 
 }
-
 
 
 
@@ -614,22 +662,22 @@ tbody tr:hover{
 
 
 /*==================================================
-    MOBILE
+ MOBILE
 ==================================================*/
 
 
 @media(max-width:900px){
 
 
-    .stats-grid{
+.stats{
 
 
-        grid-template-columns:
+    grid-template-columns:
 
-        repeat(2,1fr);
+    repeat(2,1fr);
 
 
-    }
+}
 
 
 }
@@ -637,83 +685,98 @@ tbody tr:hover{
 
 
 
-
 @media(max-width:600px){
 
 
-    .sales-header{
+.sales-header{
 
 
-        padding:15px;
-
-    }
+    padding:15px;
 
 
-
-    .logo h2{
-
-
-        font-size:1rem;
-
-    }
+}
 
 
 
-    .logo img{
+.brand img{
 
 
-        width:45px;
+    width:45px;
 
-        height:45px;
-
-    }
+    height:45px;
 
 
-
-    .dashboard{
-
-
-        width:94%;
-
-    }
+}
 
 
 
-    .dashboard>h1{
+.brand h2{
 
 
-        font-size:1.8rem;
-
-    }
+    font-size:1rem;
 
 
-
-    .stats-grid{
-
-
-        grid-template-columns:1fr;
-
-
-    }
+}
 
 
 
-    .input-row{
+.sales-header a{
 
 
-        grid-template-columns:1fr;
+    padding:10px 15px;
 
 
-    }
+}
 
 
 
-    .panel{
+.dashboard{
 
 
-        padding:20px;
+    width:94%;
 
-    }
+
+}
+
+
+
+.dashboard h1{
+
+
+    font-size:1.8rem;
+
+
+}
+
+
+
+.stats{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+
+.two{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+
+.panel{
+
+
+    padding:20px;
+
+
+}
 
 
 }

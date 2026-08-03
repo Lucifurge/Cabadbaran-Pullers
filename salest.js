@@ -5,12 +5,11 @@
 
 
 const TOURNAMENT_API =
-"https://script.google.com/macros/s/AKfycbzaQru57WFYQC0Ne2HzzGBva3XNzH5CIR7u8s_F9F8mkByt6nkVDsLj3JwZJspRyZG54A/exec";
+"https://script.google.com/macros/s/AKfycbwEwdK7ZGi8liWdfgz9cKM2s5nrfo4kroi8hyyxWIzsdtgzgvf2nE8oHGj7lVmFR978Gg/exec";
 
 
 
 let tournamentRecords = [];
-
 
 
 
@@ -56,11 +55,8 @@ addTournament
 
 
 
-
-
-
 /*==================================================
- LOAD RECORDS
+ LOAD TOURNAMENT RECORDS
 ==================================================*/
 
 
@@ -72,8 +68,9 @@ try{
 
 const response =
 await fetch(
-TOURNAMENT_API+
-"?action=tournament&t="+Date.now()
+TOURNAMENT_API +
+"?action=tournament&t=" +
+Date.now()
 );
 
 
@@ -101,13 +98,11 @@ result.data || [];
 displayTournament();
 
 
-
 updateDashboard();
 
 
 
 }
-
 
 
 }
@@ -121,21 +116,16 @@ error
 );
 
 
-
 alert(
 "Unable to load tournament records"
 );
 
 
-
 }
 
 
 
 }
-
-
-
 
 
 
@@ -146,7 +136,7 @@ alert(
 
 
 /*==================================================
- ADD RECORD
+ ADD TOURNAMENT RECORD
 ==================================================*/
 
 
@@ -158,23 +148,18 @@ e.preventDefault();
 
 
 
-
 const revenue =
 Number(
-document.getElementById(
-"revenue"
-).value
-)||0;
-
+document.getElementById("revenue").value
+) || 0;
 
 
 
 const expense =
 Number(
-document.getElementById(
-"expense"
-).value
-)||0;
+document.getElementById("expense").value
+) || 0;
+
 
 
 
@@ -184,37 +169,29 @@ const data = {
 
 
 action:
-"addTournamentSale",
+"addTournament",
 
 
 
 tournament:
-document.getElementById(
-"tournament"
-).value,
+document.getElementById("tournament").value,
 
 
 
 category:
-document.getElementById(
-"category"
-).value,
+document.getElementById("category").value,
 
 
 
 description:
-document.getElementById(
-"description"
-).value,
+document.getElementById("description").value,
 
 
 
 quantity:
 Number(
-document.getElementById(
-"quantity"
-).value
-)||0,
+document.getElementById("quantity").value
+) || 0,
 
 
 
@@ -229,28 +206,21 @@ expense,
 
 
 paymentStatus:
-document.getElementById(
-"paymentStatus"
-).value,
+document.getElementById("paymentStatus").value,
 
 
 
 addedBy:
-document.getElementById(
-"addedBy"
-).value,
+document.getElementById("addedBy").value,
 
 
 
 notes:
-document.getElementById(
-"notes"
-).value
+document.getElementById("notes").value
 
 
 
 };
-
 
 
 
@@ -263,9 +233,7 @@ try{
 
 const response =
 await fetch(
-
 TOURNAMENT_API,
-
 {
 
 
@@ -286,9 +254,11 @@ body:
 JSON.stringify(data)
 
 
+
 }
 
 );
+
 
 
 
@@ -300,8 +270,11 @@ await response.json();
 
 
 console.log(
+"ADD RESULT:",
 result
 );
+
+
 
 
 
@@ -328,6 +301,16 @@ loadTournament();
 
 }
 
+else{
+
+
+alert(
+result.message
+);
+
+
+}
+
 
 
 }
@@ -338,14 +321,14 @@ catch(error){
 
 
 console.error(
-"ADD ERROR:",
+"ADD TOURNAMENT ERROR:",
 error
 );
 
 
 
 alert(
-"Failed to save record"
+"Failed to save tournament record"
 );
 
 
@@ -355,10 +338,6 @@ alert(
 
 
 }
-
-
-
-
 
 
 
@@ -395,8 +374,7 @@ table.innerHTML="";
 
 
 tournamentRecords.forEach(
-record=>{
-
+(record)=>{
 
 
 table.innerHTML += `
@@ -410,11 +388,9 @@ ${record.Date || ""}
 </td>
 
 
-
 <td>
 ${record.Tournament || ""}
 </td>
-
 
 
 <td>
@@ -422,17 +398,14 @@ ${record.Category || ""}
 </td>
 
 
-
 <td>
 ${record.Description || ""}
 </td>
 
 
-
 <td>
 ${record.Quantity || 0}
 </td>
-
 
 
 <td>
@@ -442,13 +415,11 @@ record.Revenue || 0
 </td>
 
 
-
 <td>
 ₱${Number(
 record.Expense || 0
 ).toLocaleString()}
 </td>
-
 
 
 <td>
@@ -458,11 +429,19 @@ record.Profit || 0
 </td>
 
 
-
 <td>
 ${record.PaymentStatus || ""}
 </td>
 
+
+<td>
+${record.AddedBy || ""}
+</td>
+
+
+<td>
+${record.Notes || ""}
+</td>
 
 
 </tr>
@@ -471,15 +450,10 @@ ${record.PaymentStatus || ""}
 `;
 
 
-
 });
 
 
-
 }
-
-
-
 
 
 
@@ -497,41 +471,40 @@ ${record.PaymentStatus || ""}
 function updateDashboard(){
 
 
-let revenue = 0;
+let totalRevenue = 0;
 
-let expense = 0;
+let totalExpense = 0;
 
-let profit = 0;
+let totalProfit = 0;
 
-let players = 0;
+let totalPlayers = 0;
 
 
 
 
 
 tournamentRecords.forEach(
-record=>{
+(record)=>{
 
 
-
-revenue +=
+totalRevenue +=
 Number(
 record.Revenue
-)||0;
+) || 0;
 
 
 
-expense +=
+totalExpense +=
 Number(
 record.Expense
-)||0;
+) || 0;
 
 
 
-profit +=
+totalProfit +=
 Number(
 record.Profit
-)||0;
+) || 0;
 
 
 
@@ -539,10 +512,11 @@ if(
 record.Category === "Registration"
 ){
 
-players +=
+
+totalPlayers +=
 Number(
 record.Quantity
-)||0;
+) || 0;
 
 
 }
@@ -557,30 +531,28 @@ record.Quantity
 
 
 
-
-
-const revenueBox =
+const revenue =
 document.getElementById(
 "totalRevenue"
 );
 
 
 
-const expenseBox =
+const expense =
 document.getElementById(
 "totalExpense"
 );
 
 
 
-const profitBox =
+const profit =
 document.getElementById(
 "totalProfit"
 );
 
 
 
-const playersBox =
+const players =
 document.getElementById(
 "totalPlayers"
 );
@@ -590,40 +562,41 @@ document.getElementById(
 
 
 
-if(revenueBox)
 
-revenueBox.innerHTML =
-"₱"+
-revenue.toLocaleString();
+if(revenue)
 
-
-
-
-
-if(expenseBox)
-
-expenseBox.innerHTML =
-"₱"+
-expense.toLocaleString();
+revenue.innerHTML =
+"₱" +
+totalRevenue.toLocaleString();
 
 
 
 
 
-if(profitBox)
+if(expense)
 
-profitBox.innerHTML =
-"₱"+
-profit.toLocaleString();
-
-
+expense.innerHTML =
+"₱" +
+totalExpense.toLocaleString();
 
 
 
-if(playersBox)
 
-playersBox.innerHTML =
-players;
+
+if(profit)
+
+profit.innerHTML =
+"₱" +
+totalProfit.toLocaleString();
+
+
+
+
+
+if(players)
+
+players.innerHTML =
+totalPlayers;
 
 
 

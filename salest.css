@@ -1,0 +1,885 @@
+/*==================================================
+ CABADBARAN PULLERS
+ TOURNAMENT DASHBOARD CSS
+==================================================*/
+
+
+:root{
+
+    --gold:#D4AF37;
+    --gold-dark:#a88418;
+
+    --black:#050505;
+
+    --card:#151515;
+
+    --white:#fff;
+
+    --gray:#aaa;
+
+    --border:
+    rgba(255,255,255,.08);
+
+}
+
+
+
+
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+
+
+
+body{
+
+
+    min-height:100vh;
+
+
+    font-family:'Poppins',Arial,sans-serif;
+
+
+    background:
+
+    linear-gradient(
+        rgba(0,0,0,.92),
+        rgba(0,0,0,.96)
+    ),
+
+    url("images/hero.png");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==================================================
+ HEADER
+==================================================*/
+
+
+.sales-header{
+
+
+    width:100%;
+
+
+    padding:20px 8%;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    position:sticky;
+
+
+    top:0;
+
+
+    z-index:100;
+
+
+    background:
+    rgba(0,0,0,.85);
+
+
+    backdrop-filter:blur(15px);
+
+
+    border-bottom:
+    1px solid var(--border);
+
+
+}
+
+
+
+
+
+
+.brand{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+}
+
+
+
+
+
+.brand img{
+
+
+    width:60px;
+
+
+    height:60px;
+
+
+    object-fit:contain;
+
+
+}
+
+
+
+
+
+.brand h2{
+
+
+    color:var(--gold);
+
+
+    font-size:1.2rem;
+
+
+}
+
+
+
+
+
+.brand span{
+
+
+    color:#999;
+
+
+    font-size:.8rem;
+
+
+}
+
+
+
+
+
+
+.sales-header a{
+
+
+    color:var(--gold);
+
+
+    text-decoration:none;
+
+
+    border:2px solid var(--gold);
+
+
+    padding:12px 25px;
+
+
+    border-radius:50px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+.sales-header a:hover{
+
+
+    background:var(--gold);
+
+
+    color:black;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==================================================
+ DASHBOARD
+==================================================*/
+
+
+.dashboard{
+
+
+    width:90%;
+
+
+    max-width:1400px;
+
+
+    margin:auto;
+
+
+    padding:50px 0;
+
+
+}
+
+
+
+
+
+.dashboard h1{
+
+
+    text-align:center;
+
+
+    color:var(--gold);
+
+
+    font-size:2.5rem;
+
+
+    margin-bottom:40px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==================================================
+ STATS
+==================================================*/
+
+
+.stats{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+
+    gap:25px;
+
+
+    margin-bottom:40px;
+
+
+}
+
+
+
+
+
+
+
+.card{
+
+
+    background:var(--card);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:25px;
+
+
+    padding:30px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:20px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+
+.card:hover{
+
+
+    transform:translateY(-5px);
+
+
+    border-color:var(--gold);
+
+
+}
+
+
+
+
+
+.card i{
+
+
+    color:var(--gold);
+
+
+    font-size:2.5rem;
+
+
+}
+
+
+
+
+
+.card h2{
+
+
+    font-size:2rem;
+
+
+}
+
+
+
+
+
+.card p{
+
+
+    color:var(--gray);
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==================================================
+ PANEL
+==================================================*/
+
+
+.panel{
+
+
+    background:var(--card);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:25px;
+
+
+    padding:35px;
+
+
+    margin-bottom:40px;
+
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.5);
+
+
+}
+
+
+
+
+
+.panel h2{
+
+
+    color:var(--gold);
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==================================================
+ FORM
+==================================================*/
+
+
+form{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+}
+
+
+
+
+
+label{
+
+
+    margin-bottom:8px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+input,
+
+select,
+
+textarea{
+
+
+    background:#080808;
+
+
+    color:white;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    padding:15px;
+
+
+    border-radius:12px;
+
+
+    margin-bottom:20px;
+
+
+    outline:none;
+
+
+    font-family:inherit;
+
+
+}
+
+
+
+
+
+textarea{
+
+
+    resize:none;
+
+
+    height:100px;
+
+
+}
+
+
+
+
+
+input:focus,
+
+select:focus,
+
+textarea:focus{
+
+
+    border-color:var(--gold);
+
+
+}
+
+
+
+
+
+
+
+.two{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+    1fr 1fr;
+
+
+    gap:20px;
+
+
+}
+
+
+
+
+
+
+
+
+
+button{
+
+
+    margin-top:10px;
+
+
+    padding:16px;
+
+
+    border:none;
+
+
+    border-radius:50px;
+
+
+    background:var(--gold);
+
+
+    color:black;
+
+
+    font-weight:700;
+
+
+    font-size:1rem;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+button:hover{
+
+
+    background:var(--gold-dark);
+
+
+    transform:translateY(-3px);
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==================================================
+ TABLE
+==================================================*/
+
+
+.table{
+
+
+    overflow-x:auto;
+
+
+}
+
+
+
+
+
+table{
+
+
+    width:100%;
+
+
+    border-collapse:collapse;
+
+
+}
+
+
+
+
+
+thead{
+
+
+    background:#090909;
+
+
+}
+
+
+
+
+
+th{
+
+
+    padding:18px;
+
+
+    color:var(--gold);
+
+
+    text-align:left;
+
+
+}
+
+
+
+
+
+td{
+
+
+    padding:15px;
+
+
+    border-bottom:
+    1px solid var(--border);
+
+
+    color:#ddd;
+
+
+}
+
+
+
+
+
+tbody tr:hover{
+
+
+    background:
+    rgba(212,175,55,.05);
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==================================================
+ MOBILE
+==================================================*/
+
+
+@media(max-width:900px){
+
+
+.stats{
+
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+
+}
+
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+
+.sales-header{
+
+
+    padding:15px;
+
+
+}
+
+
+
+
+.brand img{
+
+
+    width:45px;
+
+
+    height:45px;
+
+
+}
+
+
+
+
+.brand h2{
+
+
+    font-size:1rem;
+
+
+}
+
+
+
+
+
+.sales-header a{
+
+
+    padding:10px 15px;
+
+
+}
+
+
+
+
+
+.dashboard{
+
+
+    width:94%;
+
+
+}
+
+
+
+
+
+.dashboard h1{
+
+
+    font-size:1.8rem;
+
+
+}
+
+
+
+
+.stats{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+
+
+.two{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+
+
+.panel{
+
+
+    padding:20px;
+
+
+}
+
+
+
+}

@@ -5,12 +5,11 @@
 
 
 const TOURNAMENT_API =
-"https://script.google.com/macros/s/AKfycbwEwdK7ZGi8liWdfgz9cKM2s5nrfo4kroi8hyyxWIzsdtgzgvf2nE8oHGj7lVmFR978Gg/exec";
+"https://script.google.com/macros/s/AKfycby3B_eXN2ACG0j19eR0XZrfXX1OGREhHdtp1MJNFegGaRCL3nO7d04xPJV1NR_5Gihj5w/exec";
 
 
 
 let tournamentRecords = [];
-
 
 
 
@@ -56,7 +55,7 @@ addTournament
 
 
 /*==================================================
- LOAD TOURNAMENT RECORDS
+ LOAD TOURNAMENT
 ==================================================*/
 
 
@@ -68,9 +67,8 @@ try{
 
 const response =
 await fetch(
-TOURNAMENT_API +
-"?action=tournament&t=" +
-Date.now()
+TOURNAMENT_API+
+"?action=tournament"
 );
 
 
@@ -105,7 +103,9 @@ updateDashboard();
 }
 
 
+
 }
+
 
 catch(error){
 
@@ -116,13 +116,14 @@ error
 );
 
 
+
 alert(
 "Unable to load tournament records"
 );
 
 
-}
 
+}
 
 
 }
@@ -136,7 +137,7 @@ alert(
 
 
 /*==================================================
- ADD TOURNAMENT RECORD
+ ADD TOURNAMENT
 ==================================================*/
 
 
@@ -148,28 +149,11 @@ e.preventDefault();
 
 
 
-const revenue =
-Number(
-document.getElementById("revenue").value
-) || 0;
-
-
-
-const expense =
-Number(
-document.getElementById("expense").value
-) || 0;
-
-
-
-
-
 
 const data = {
 
 
-action:
-"addTournament",
+action:"addTournament",
 
 
 
@@ -191,17 +175,21 @@ document.getElementById("description").value,
 quantity:
 Number(
 document.getElementById("quantity").value
-) || 0,
+)||0,
 
 
 
 revenue:
-revenue,
+Number(
+document.getElementById("revenue").value
+)||0,
 
 
 
 expense:
-expense,
+Number(
+document.getElementById("expense").value
+)||0,
 
 
 
@@ -227,7 +215,6 @@ document.getElementById("notes").value
 
 
 
-
 try{
 
 
@@ -240,23 +227,12 @@ TOURNAMENT_API,
 method:"POST",
 
 
-headers:{
-
-
-"Content-Type":
-"text/plain;charset=utf-8"
-
-
-},
-
-
 body:
 JSON.stringify(data)
 
 
 
 }
-
 );
 
 
@@ -270,7 +246,7 @@ await response.json();
 
 
 console.log(
-"ADD RESULT:",
+"ADD TOURNAMENT:",
 result
 );
 
@@ -336,7 +312,6 @@ alert(
 }
 
 
-
 }
 
 
@@ -348,7 +323,7 @@ alert(
 
 
 /*==================================================
- DISPLAY TABLE
+ DISPLAY TOURNAMENT
 ==================================================*/
 
 
@@ -374,7 +349,7 @@ table.innerHTML="";
 
 
 tournamentRecords.forEach(
-(record)=>{
+record=>{
 
 
 table.innerHTML += `
@@ -450,6 +425,7 @@ ${record.Notes || ""}
 `;
 
 
+
 });
 
 
@@ -484,39 +460,30 @@ let totalPlayers = 0;
 
 
 tournamentRecords.forEach(
-(record)=>{
+record=>{
 
 
 totalRevenue +=
-Number(
-record.Revenue
-) || 0;
+Number(record.Revenue)||0;
 
 
 
 totalExpense +=
-Number(
-record.Expense
-) || 0;
+Number(record.Expense)||0;
 
 
 
 totalProfit +=
-Number(
-record.Profit
-) || 0;
+Number(record.Profit)||0;
 
 
 
-if(
-record.Category === "Registration"
-){
+
+if(record.Category==="Registration"){
 
 
 totalPlayers +=
-Number(
-record.Quantity
-) || 0;
+Number(record.Quantity)||0;
 
 
 }
@@ -524,7 +491,6 @@ record.Quantity
 
 
 });
-
 
 
 
@@ -562,34 +528,27 @@ document.getElementById(
 
 
 
-
 if(revenue)
 
 revenue.innerHTML =
-"₱" +
+"₱"+
 totalRevenue.toLocaleString();
-
-
 
 
 
 if(expense)
 
 expense.innerHTML =
-"₱" +
+"₱"+
 totalExpense.toLocaleString();
-
-
 
 
 
 if(profit)
 
 profit.innerHTML =
-"₱" +
+"₱"+
 totalProfit.toLocaleString();
-
-
 
 
 

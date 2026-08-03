@@ -5,7 +5,7 @@
 
 
 const TOURNAMENT_API =
-"https://script.google.com/macros/s/AKfycbzP3Lrd-V8FtfLzMuzgzgP30p6Ipz9lXWnww_9qHF8jaQyjg_p6PDECtHGHuhT6GqIolw/exec";
+"https://script.google.com/macros/s/AKfycbzaQru57WFYQC0Ne2HzzGBva3XNzH5CIR7u8s_F9F8mkByt6nkVDsLj3JwZJspRyZG54A/exec";
 
 
 

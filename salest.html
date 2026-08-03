@@ -1,4 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Cabadbaran Pullers Tournament Dashboard
+</title>
+
+
+<link rel="icon" href="logo.png">
+
+
+<link rel="stylesheet" href="salest.css">
+
+
+<link 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+rel="stylesheet">
+
+
+</head>
+
+
+<body>
+
+
+
+<header class="sales-header">
+
+
+<div class="brand">
+
+
+<img src="logo.png">
+
+
+<div>
+
+<h2>
+CABADBARAN PULLERS
+</h2>
+
+
+<span>
+TOURNAMENT MANAGEMENT SYSTEM
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<a href="index.html">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Website
+
+</a>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+<main class="dashboard">
+
+
+
+
+
+<h1>
+
+<i class="fa-solid fa-trophy"></i>
+
+Tournament Dashboard
+
+</h1>
+
+
+
+
+
+
+
+
+
+<section class="stats">
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-peso-sign"></i>
+
+
+<div>
+
+<h2 id="totalRevenue">
+₱0
+</h2>
+
+
+<p>
+Total Revenue
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-money-bill-transfer"></i>
+
+
+<div>
+
+<h2 id="totalExpense">
+₱0
+</h2>
+
+
+<p>
+Total Expenses
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+<div>
+
+<h2 id="totalProfit">
+₱0
+</h2>
+
+
+<p>
+Tournament Profit
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+<div>
+
+<h2 id="totalPlayers">
+0
+</h2>
+
+
+<p>
+Participants
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
 <section class="panel">
+
+
+<h2>
+
+<i class="fa-solid fa-plus"></i>
+
+Add Tournament Record
+
+</h2>
+
+
+
+
+
+
+
+<form id="tournamentForm">
+
+
+
+
+
+<label>
+Tournament Name
+</label>
+
+
+<input
+type="text"
+id="tournament"
+placeholder="Example: Cabadbaran Pullers Open"
+required>
+
+
+
+
+
+
+
+
+
+<label>
+Category
+</label>
+
+
+<select id="category">
+
+
+<option>
+Registration
+</option>
+
+
+<option>
+Sponsorship
+</option>
+
+
+<option>
+Jersey Sales
+</option>
+
+
+<option>
+Food
+</option>
+
+
+<option>
+Merchandise
+</option>
+
+
+<option>
+Venue Expense
+</option>
+
+
+<option>
+Prize Expense
+</option>
+
+
+<option>
+Officials Expense
+</option>
+
+
+<option>
+Other
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+
+
+<label>
+Description
+</label>
+
+
+<input
+type="text"
+id="description"
+placeholder="Example: Men's Category Entry">
+
+
+
+
+
+
+
+
+
+
+<div class="two">
+
+
+
+<div>
+
+<label>
+Quantity
+</label>
+
+
+<input
+type="number"
+id="quantity"
+value="1"
+min="1">
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+<label>
+Added By
+</label>
+
+
+<input
+type="text"
+id="addedBy"
+placeholder="Name">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="two">
+
+
+
+<div>
+
+<label>
+Revenue
+</label>
+
+
+<input
+type="number"
+id="revenue"
+value="0">
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+<label>
+Expense
+</label>
+
+
+<input
+type="number"
+id="expense"
+value="0">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<label>
+Payment Status
+</label>
+
+
+<select id="paymentStatus">
+
+
+<option>
+Paid
+</option>
+
+
+<option>
+Pending
+</option>
+
+
+</select>
+
+
+
+
+
+
+
+
+
+<label>
+Notes
+</label>
+
+
+<textarea
+id="notes"
+placeholder="Additional information">
+</textarea>
+
+
+
+
+
+
+
+
+
+<button type="submit">
+
+
+<i class="fa-solid fa-save"></i>
+
+Record Transaction
+
+
+</button>
+
+
+
+
+
+</form>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="panel">
+
 
 
 <h2>
@@ -13,6 +549,8 @@ Tournament Records
 
 
 
+
+
 <div class="table">
 
 
@@ -22,6 +560,7 @@ Tournament Records
 
 
 <thead>
+
 
 <tr>
 
@@ -90,10 +629,13 @@ Notes
 
 
 
+
 <tbody id="tournamentTable">
 
 
 </tbody>
+
+
 
 
 
@@ -106,3 +648,24 @@ Notes
 
 
 </section>
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+<script src="salest.js"></script>
+
+
+
+</body>
+
+</html>

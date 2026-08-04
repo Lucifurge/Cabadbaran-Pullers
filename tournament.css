@@ -1,30 +1,41 @@
 /*==================================================
  CABADBARAN PULLERS
- TOURNAMENT REGISTRATION STYLE
+ OPENING RANKINGS TOURNAMENT STYLE
 ==================================================*/
 
 
 :root{
 
+
     --gold:#D4AF37;
+
     --gold-dark:#B68D1D;
 
+
     --black:#050505;
+
     --dark:#111;
+
 
     --card:#171717;
 
+
     --white:#ffffff;
 
+
     --text:#cfcfcf;
+
 
     --border:
     rgba(255,255,255,.08);
 
+
     --shadow:
     0 15px 40px rgba(0,0,0,.6);
 
+
 }
+
 
 
 
@@ -32,11 +43,17 @@
 
 *{
 
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
 
+
 }
+
+
 
 
 
@@ -44,29 +61,46 @@
 
 body{
 
+
     min-height:100vh;
 
+
     font-family:
+    'Poppins',
     Arial,
     sans-serif;
 
+
+
     background:
+
 
     linear-gradient(
     rgba(0,0,0,.92),
     rgba(0,0,0,.96)
     ),
 
+
     url("hero.png");
+
 
 
     background-size:cover;
 
+
     background-position:center;
+
+
+    background-attachment:fixed;
+
 
     color:white;
 
+
+
 }
+
+
 
 
 
@@ -82,32 +116,46 @@ body{
 .header{
 
 
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:20px 8%;
+    width:100%;
 
 
-background:
-rgba(0,0,0,.9);
+    padding:20px 8%;
 
 
-border-bottom:
-
-1px solid var(--border);
+    display:flex;
 
 
-position:sticky;
-
-top:0;
-
-z-index:100;
+    justify-content:space-between;
 
 
-backdrop-filter:blur(15px);
+    align-items:center;
+
+
+
+    background:
+    rgba(0,0,0,.9);
+
+
+
+    border-bottom:
+
+    1px solid var(--border);
+
+
+
+    position:sticky;
+
+
+    top:0;
+
+
+    z-index:100;
+
+
+
+    backdrop-filter:
+    blur(15px);
+
 
 
 }
@@ -116,14 +164,18 @@ backdrop-filter:blur(15px);
 
 
 
-
 .brand{
 
-display:flex;
 
-align-items:center;
+    display:flex;
 
-gap:15px;
+
+    align-items:center;
+
+
+    gap:15px;
+
+
 
 }
 
@@ -133,11 +185,16 @@ gap:15px;
 
 .brand img{
 
-width:65px;
 
-height:65px;
+    width:65px;
 
-object-fit:contain;
+
+    height:65px;
+
+
+    object-fit:contain;
+
+
 
 }
 
@@ -147,9 +204,13 @@ object-fit:contain;
 
 .brand h2{
 
-color:var(--gold);
 
-font-size:1.3rem;
+    color:var(--gold);
+
+
+    font-size:1.3rem;
+
+
 
 }
 
@@ -159,9 +220,13 @@ font-size:1.3rem;
 
 .brand span{
 
-color:#999;
 
-font-size:.85rem;
+    color:#999;
+
+
+    font-size:.85rem;
+
+
 
 }
 
@@ -169,19 +234,32 @@ font-size:.85rem;
 
 
 
+
+
 .header a{
 
-text-decoration:none;
 
-color:var(--gold);
+    text-decoration:none;
 
-border:2px solid var(--gold);
 
-padding:12px 25px;
+    color:var(--gold);
 
-border-radius:50px;
 
-transition:.3s;
+    border:
+
+    2px solid var(--gold);
+
+
+
+    padding:12px 25px;
+
+
+    border-radius:50px;
+
+
+    transition:.3s;
+
+
 
 }
 
@@ -191,9 +269,13 @@ transition:.3s;
 
 .header a:hover{
 
-background:var(--gold);
 
-color:black;
+    background:var(--gold);
+
+
+    color:black;
+
+
 
 }
 
@@ -213,20 +295,25 @@ color:black;
 .hero{
 
 
-min-height:80vh;
+    min-height:80vh;
 
 
-display:flex;
-
-align-items:center;
-
-justify-content:center;
+    display:flex;
 
 
-text-align:center;
+    justify-content:center;
 
 
-padding:50px 20px;
+    align-items:center;
+
+
+
+    text-align:center;
+
+
+
+    padding:50px 20px;
+
 
 
 }
@@ -237,7 +324,10 @@ padding:50px 20px;
 
 .hero-content{
 
-max-width:900px;
+
+    max-width:900px;
+
+
 
 }
 
@@ -247,9 +337,13 @@ max-width:900px;
 
 .hero-logo{
 
-width:150px;
 
-margin-bottom:20px;
+    width:160px;
+
+
+    margin-bottom:25px;
+
+
 
 }
 
@@ -260,11 +354,14 @@ margin-bottom:20px;
 .hero h1{
 
 
-font-size:3rem;
+    font-size:3rem;
 
-color:var(--gold);
 
-line-height:1.2;
+    line-height:1.2;
+
+
+    color:var(--gold);
+
 
 
 }
@@ -276,9 +373,12 @@ line-height:1.2;
 .hero h2{
 
 
-margin-top:15px;
+    margin-top:20px;
 
-font-size:1.8rem;
+
+    font-size:2rem;
+
+
 
 }
 
@@ -286,30 +386,39 @@ font-size:1.8rem;
 
 
 
-.coming{
+.event-status{
 
 
-display:inline-block;
-
-margin:30px 0;
+    display:inline-block;
 
 
-padding:15px 40px;
+    margin:30px 0;
 
 
-border:2px solid var(--gold);
+    padding:15px 40px;
 
 
-border-radius:50px;
+    border:
+
+    2px solid var(--gold);
 
 
-color:var(--gold);
+
+    border-radius:50px;
 
 
-font-weight:bold;
+    color:var(--gold);
 
 
-font-size:1.3rem;
+    font-weight:bold;
+
+
+    letter-spacing:1px;
+
+
+    background:
+    rgba(212,175,55,.05);
+
 
 
 }
@@ -321,11 +430,15 @@ font-size:1.3rem;
 .hero p{
 
 
-color:var(--text);
+    color:var(--text);
 
-font-size:1.1rem;
 
-line-height:1.8;
+    font-size:1.1rem;
+
+
+    line-height:1.8;
+
+
 
 }
 
@@ -336,13 +449,18 @@ line-height:1.8;
 .slogan{
 
 
-margin-top:25px;
+    margin-top:25px;
 
-font-size:1.3rem!important;
 
-font-weight:bold;
+    color:white!important;
 
-color:white!important;
+
+    font-weight:bold;
+
+
+    font-size:1.3rem!important;
+
+
 
 }
 
@@ -362,13 +480,17 @@ color:white!important;
 .container{
 
 
-width:90%;
+    width:90%;
 
-max-width:1100px;
 
-margin:auto;
+    max-width:1200px;
 
-padding-bottom:50px;
+
+    margin:auto;
+
+
+    padding-bottom:50px;
+
 
 
 }
@@ -377,27 +499,35 @@ padding-bottom:50px;
 
 
 
+
+
 .panel{
 
 
-background:var(--card);
+    background:var(--card);
 
 
-border:
 
-1px solid var(--border);
+    border:
 
-
-border-radius:25px;
+    1px solid var(--border);
 
 
-padding:35px;
+
+    border-radius:25px;
 
 
-margin-bottom:30px;
+
+    padding:35px;
 
 
-box-shadow:var(--shadow);
+
+    margin-bottom:35px;
+
+
+
+    box-shadow:var(--shadow);
+
 
 
 }
@@ -409,11 +539,14 @@ box-shadow:var(--shadow);
 .panel h2{
 
 
-color:var(--gold);
+    color:var(--gold);
 
-margin-bottom:25px;
 
-font-size:1.8rem;
+    margin-bottom:25px;
+
+
+    font-size:1.8rem;
+
 
 
 }
@@ -425,11 +558,14 @@ font-size:1.8rem;
 .panel h3{
 
 
-color:var(--gold);
+    color:var(--gold);
 
-margin-top:25px;
 
-margin-bottom:10px;
+    margin-top:25px;
+
+
+    margin-bottom:15px;
+
 
 
 }
@@ -441,11 +577,14 @@ margin-bottom:10px;
 .panel p{
 
 
-color:var(--text);
+    color:var(--text);
 
-line-height:1.8;
 
-margin-bottom:15px;
+    line-height:1.8;
+
+
+    margin-bottom:15px;
+
 
 
 }
@@ -457,11 +596,14 @@ margin-bottom:15px;
 .panel ul{
 
 
-margin-left:25px;
+    margin-left:30px;
 
-color:white;
 
-line-height:2;
+    color:#ddd;
+
+
+    line-height:2;
+
 
 
 }
@@ -473,24 +615,33 @@ line-height:2;
 
 
 
+
+/*==================================================
+ CATEGORY BOX
+==================================================*/
+
+
 .category-box{
 
 
-background:#0d0d0d;
+    background:#0d0d0d;
 
 
-padding:25px;
+    padding:25px;
 
 
-border-radius:15px;
+
+    border-radius:18px;
 
 
-margin-top:20px;
+    margin-top:20px;
 
 
-border-left:
 
-4px solid var(--gold);
+    border-left:
+
+    4px solid var(--gold);
+
 
 
 }
@@ -511,9 +662,11 @@ border-left:
 form{
 
 
-display:flex;
+    display:flex;
 
-flex-direction:column;
+
+    flex-direction:column;
+
 
 
 }
@@ -525,12 +678,14 @@ flex-direction:column;
 label{
 
 
-margin-top:15px;
-
-margin-bottom:8px;
+    margin-top:18px;
 
 
-font-weight:bold;
+    margin-bottom:8px;
+
+
+    font-weight:bold;
+
 
 
 }
@@ -546,27 +701,38 @@ select,
 textarea{
 
 
-background:#0b0b0b;
+    width:100%;
 
 
-color:white;
+
+    background:#0b0b0b;
 
 
-border:
 
-2px solid rgba(255,255,255,.1);
-
-
-padding:15px;
+    color:white;
 
 
-border-radius:12px;
+
+    border:
+
+    2px solid rgba(255,255,255,.1);
 
 
-font-size:1rem;
+
+    padding:15px;
 
 
-outline:none;
+
+    border-radius:12px;
+
+
+
+    outline:none;
+
+
+
+    font-size:1rem;
+
 
 
 }
@@ -582,7 +748,8 @@ select:focus,
 textarea:focus{
 
 
-border-color:var(--gold);
+    border-color:var(--gold);
+
 
 
 }
@@ -594,13 +761,14 @@ border-color:var(--gold);
 textarea{
 
 
-height:120px;
+    height:130px;
 
-resize:none;
+
+    resize:none;
+
 
 
 }
-
 
 
 
@@ -609,15 +777,16 @@ resize:none;
 .section-title{
 
 
-margin-top:35px!important;
+    margin-top:35px!important;
 
 
-border-bottom:
-
-1px solid var(--border);
+    padding-bottom:10px;
 
 
-padding-bottom:10px;
+    border-bottom:
+
+    1px solid var(--border);
+
 
 
 }
@@ -628,22 +797,27 @@ padding-bottom:10px;
 
 
 
+
+
+/*==================================================
+ AGREEMENT
+==================================================*/
+
+
 .agreement{
 
 
-display:flex;
+    display:flex;
 
 
-gap:12px;
+    gap:12px;
 
 
-align-items:flex-start;
+    align-items:flex-start;
 
 
-margin-top:20px;
+    margin-top:20px;
 
-
-color:#ddd;
 
 
 }
@@ -655,12 +829,14 @@ color:#ddd;
 .agreement input{
 
 
-width:18px;
-
-height:18px;
+    width:18px;
 
 
-margin-top:3px;
+    height:18px;
+
+
+    margin-top:5px;
+
 
 
 }
@@ -669,37 +845,72 @@ margin-top:3px;
 
 
 
+.agreement label{
+
+
+    margin:0;
+
+
+    color:#ddd;
+
+
+    font-weight:normal;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==================================================
+ BUTTON
+==================================================*/
+
+
 button{
 
 
-margin-top:35px;
+    margin-top:35px;
 
 
-padding:18px;
+    padding:18px;
 
 
-border:none;
+
+    border:none;
 
 
-border-radius:50px;
+    border-radius:50px;
 
 
-background:var(--gold);
+
+    background:var(--gold);
 
 
-color:black;
+
+    color:black;
 
 
-font-weight:bold;
+
+    font-size:1.1rem;
 
 
-font-size:1.1rem;
+    font-weight:bold;
 
 
-cursor:pointer;
+
+    cursor:pointer;
 
 
-transition:.3s;
+
+    transition:.3s;
+
 
 
 }
@@ -711,10 +922,165 @@ transition:.3s;
 button:hover{
 
 
-background:var(--gold-dark);
+    background:var(--gold-dark);
 
 
-transform:translateY(-3px);
+    transform:translateY(-3px);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*==================================================
+ PAYMENT QR
+==================================================*/
+
+
+.payment-box{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+
+
+    gap:30px;
+
+
+
+    margin-top:30px;
+
+
+
+}
+
+
+
+
+
+
+
+.qr-card{
+
+
+    background:#0d0d0d;
+
+
+
+    border-radius:20px;
+
+
+
+    padding:25px;
+
+
+
+    text-align:center;
+
+
+
+    border:
+
+    1px solid rgba(212,175,55,.3);
+
+
+
+}
+
+
+
+
+
+.qr-card h3{
+
+
+    color:var(--gold);
+
+
+    margin-bottom:20px;
+
+
+
+}
+
+
+
+
+
+.qr-card img{
+
+
+    width:250px;
+
+
+    height:250px;
+
+
+    object-fit:contain;
+
+
+
+    background:white;
+
+
+    padding:10px;
+
+
+    border-radius:15px;
+
+
+
+}
+
+
+
+
+
+.qr-card p{
+
+
+    margin-top:15px;
+
+
+
+}
+
+
+
+
+
+
+
+.payment-note{
+
+
+    margin-top:30px;
+
+
+    padding:20px;
+
+
+
+    background:#0d0d0d;
+
+
+
+    border-left:
+
+    4px solid var(--gold);
+
 
 
 }
@@ -735,18 +1101,20 @@ transform:translateY(-3px);
 footer{
 
 
-text-align:center;
+    text-align:center;
 
 
-padding:40px;
+    padding:40px;
 
 
-background:#000;
+    background:#000;
 
 
-border-top:
 
-1px solid var(--border);
+    border-top:
+
+    1px solid var(--border);
+
 
 
 }
@@ -758,10 +1126,11 @@ border-top:
 footer h3{
 
 
-color:var(--gold);
+    color:var(--gold);
 
 
-font-size:1.5rem;
+    font-size:1.5rem;
+
 
 
 }
@@ -773,9 +1142,11 @@ font-size:1.5rem;
 footer p{
 
 
-color:#aaa;
+    color:#aaa;
 
-margin-top:10px;
+
+    margin-top:10px;
+
 
 
 }
@@ -800,89 +1171,181 @@ margin-top:10px;
 .header{
 
 
-padding:15px;
+    padding:15px;
+
 
 
 }
+
 
 
 
 .brand img{
 
 
-width:50px;
+    width:50px;
 
-height:50px;
+
+    height:50px;
+
 
 
 }
+
+
 
 
 
 .brand h2{
 
 
-font-size:1rem;
+    font-size:1rem;
+
 
 
 }
+
+
+
+
+
+.brand span{
+
+
+    font-size:.7rem;
+
+
+
+}
+
+
 
 
 
 .header a{
 
 
-padding:10px 15px;
+    padding:10px 15px;
 
 
 }
 
 
 
-.hero h1{
 
 
-font-size:2rem;
+.hero{
 
 
-}
+    min-height:70vh;
 
-
-
-.hero h2{
-
-
-font-size:1.3rem;
 
 
 }
+
+
 
 
 
 .hero-logo{
 
 
-width:110px;
+    width:110px;
+
 
 
 }
+
+
+
+
+
+.hero h1{
+
+
+    font-size:2rem;
+
+
+
+}
+
+
+
+
+
+.hero h2{
+
+
+    font-size:1.3rem;
+
+
+
+}
+
+
 
 
 
 .container{
 
 
-width:94%;
+    width:94%;
+
 
 
 }
 
 
 
+
+
 .panel{
 
 
-padding:20px;
+    padding:20px;
+
+
+
+}
+
+
+
+
+
+.panel h2{
+
+
+    font-size:1.4rem;
+
+
+
+}
+
+
+
+
+
+.payment-box{
+
+
+    grid-template-columns:1fr;
+
+
+
+}
+
+
+
+
+
+.qr-card img{
+
+
+    width:220px;
+
+
+    height:220px;
+
 
 
 }

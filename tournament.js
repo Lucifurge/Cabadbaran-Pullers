@@ -11,6 +11,7 @@ const REGISTRATION_API =
 
 
 
+
 /*==================================================
  START SYSTEM
 ==================================================*/
@@ -62,94 +63,138 @@ e.preventDefault();
 
 
 
+
 const data = {
+
 
 
 action:"register",
 
 
 
+
+
+
 fullName:
+
 document.getElementById(
 "fullName"
 ).value,
 
 
 
+
+
 age:
+
 document.getElementById(
 "age"
 ).value,
 
 
 
+
+
 birthDate:
+
 document.getElementById(
 "birthDate"
 ).value,
 
 
 
+
+
 contactNumber:
+
 document.getElementById(
 "contactNumber"
 ).value,
 
 
 
+
+
 address:
+
 document.getElementById(
 "address"
 ).value,
 
 
 
+
+
 category:
+
 document.getElementById(
 "category"
 ).value,
 
 
 
+
+
 arm:
+
 document.getElementById(
 "arm"
 ).value,
 
 
 
+
+
+
+// AUTOMATIC RANKING DIVISION
+
 division:
-document.getElementById(
-"division"
-).value,
+
+"Opening Rankings Battle (Rank #5 - Rank #10)",
+
+
+
 
 
 
 weightClass:
+
 document.getElementById(
 "weightClass"
 ).value,
 
 
 
+
+
 emergencyContactName:
+
 document.getElementById(
 "emergencyContactName"
 ).value,
 
 
 
+
+
 emergencyContactNumber:
+
 document.getElementById(
 "emergencyContactNumber"
 ).value,
 
 
 
+
+
+
 notes:
+
 document.getElementById(
 "notes"
 ).value
+
+
 
 
 
@@ -162,10 +207,12 @@ document.getElementById(
 
 
 
+
 try{
 
 
 const response =
+
 await fetch(
 
 REGISTRATION_API,
@@ -176,8 +223,21 @@ REGISTRATION_API,
 method:"POST",
 
 
+headers:{
+
+
+"Content-Type":
+
+"text/plain;charset=utf-8"
+
+
+},
+
+
 body:
+
 JSON.stringify(data)
+
 
 
 }
@@ -189,17 +249,27 @@ JSON.stringify(data)
 
 
 
+
+
 const result =
+
 await response.json();
 
 
 
 
 
+
+
 console.log(
+
 "REGISTRATION:",
+
 result
+
 );
+
+
 
 
 
@@ -211,15 +281,21 @@ if(result.success){
 
 
 alert(
+
 "Registration Submitted Successfully!"
+
 );
 
 
 
 document
+
 .getElementById(
+
 "registrationForm"
+
 )
+
 .reset();
 
 
@@ -232,15 +308,21 @@ else{
 
 
 alert(
+
 result.message
+
 );
 
 
+
+}
+
+
+
 }
 
 
 
-}
 
 
 
@@ -249,15 +331,21 @@ result.message
 catch(error){
 
 
+
 console.error(
+
 "REGISTRATION ERROR:",
+
 error
+
 );
 
 
 
 alert(
+
 "Unable to submit registration"
+
 );
 
 

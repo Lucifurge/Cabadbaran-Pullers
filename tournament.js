@@ -5,7 +5,7 @@
 
 
 const REGISTRATION_API =
-"https://script.google.com/macros/s/AKfycbz9HwWRzBZO2weFw9ywY5I7oeP5Tb5e_MhKjy5K8l_dUcVSjG34ChUEgqqgJo8mJGwJ/exec";
+"https://script.google.com/macros/s/AKfycbzmr29Ua7kgDlCmq4AbdswujiouYh-YboS59AFsPhkB9PsCxnjKX9kmsIgQvZHYYXdG/exec";
 
 
 

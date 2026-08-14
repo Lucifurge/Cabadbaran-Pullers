@@ -1,6 +1,7 @@
 /*==================================================
  CABADBARAN PULLERS
- TOURNAMENT REGISTRATION SYSTEM
+ SUPER TOURNAMENT REGISTRATION SYSTEM
+ AUGUST 30, 2026
 ==================================================*/
 
 
@@ -9,43 +10,94 @@ const REGISTRATION_API =
 
 
 
-
-
-
 /*==================================================
  START SYSTEM
 ==================================================*/
 
-
 document.addEventListener(
 "DOMContentLoaded",
-()=>{
+() => {
+
+    const form =
+    document.getElementById(
+        "registrationForm"
+    );
 
 
-const form =
-document.getElementById(
-"registrationForm"
-);
+    if (form) {
 
+        form.addEventListener(
+            "submit",
+            submitRegistration
+        );
 
-
-if(form){
-
-form.addEventListener(
-"submit",
-submitRegistration
-);
-
-}
-
+    }
 
 });
 
 
 
+/*==================================================
+ GET WEIGHT RANGE
+==================================================*/
+
+function getWeightRange(category) {
+
+    switch (category) {
+
+        case "Newbie":
+            return "Open Weight - CBR Exclusive";
+
+        case "Womens":
+            return "Open Weight - Women's";
+
+        case "Light":
+            return "55kg - 69kg";
+
+        case "Middle":
+            return "70kg - 85kg";
+
+        case "Heavy":
+            return "86kg Above";
+
+        default:
+            return "";
+
+    }
+
+}
 
 
 
+/*==================================================
+ GET CATEGORY DESCRIPTION
+==================================================*/
+
+function getCategoryName(category) {
+
+    switch (category) {
+
+        case "Newbie":
+            return "Newbie - Open Weight (CBR Exclusive)";
+
+        case "Womens":
+            return "Women's - Open Weight (Open for All)";
+
+        case "Light":
+            return "Light Weight - 55kg-69kg (Open for All)";
+
+        case "Middle":
+            return "Middle Weight - 70kg-85kg (Open for All)";
+
+        case "Heavy":
+            return "Heavy Weight - 86kg Above (Open for All)";
+
+        default:
+            return category;
+
+    }
+
+}
 
 
 
@@ -53,305 +105,342 @@ submitRegistration
  SUBMIT REGISTRATION
 ==================================================*/
 
+async function submitRegistration(e) {
 
-async function submitRegistration(e){
+    e.preventDefault();
 
 
-e.preventDefault();
+    /*----------------------------------------------
+      GET CATEGORY
+    ----------------------------------------------*/
 
+    const categoryElement =
+    document.getElementById(
+        "category"
+    );
 
 
+    const category =
+    categoryElement
+    ? categoryElement.value
+    : "";
 
 
+    /*----------------------------------------------
+      VALIDATE CATEGORY
+    ----------------------------------------------*/
 
-const data = {
+    if (!category) {
 
+        alert(
+            "Please select a competition category."
+        );
 
+        return;
 
-action:"register",
+    }
 
 
 
+    /*----------------------------------------------
+      BUILD REGISTRATION DATA
+    ----------------------------------------------*/
 
+    const data = {
 
+        action: "register",
 
-fullName:
 
-document.getElementById(
-"fullName"
-).value,
+        event:
+        "Cabadbaran Pullers Super Tournament",
 
 
+        eventDate:
+        "August 30, 2026",
 
 
+        fullName:
+        document.getElementById(
+            "fullName"
+        ).value.trim(),
 
-age:
 
-document.getElementById(
-"age"
-).value,
+        age:
+        document.getElementById(
+            "age"
+        ).value,
 
 
+        birthDate:
+        document.getElementById(
+            "birthDate"
+        ).value,
 
 
+        contactNumber:
+        document.getElementById(
+            "contactNumber"
+        ).value.trim(),
 
-birthDate:
 
-document.getElementById(
-"birthDate"
-).value,
+        address:
+        document.getElementById(
+            "address"
+        ).value.trim(),
 
 
+        /*------------------------------------------
+          NEW CATEGORY SYSTEM
+        ------------------------------------------*/
 
+        category:
+        getCategoryName(category),
 
 
-contactNumber:
+        /*------------------------------------------
+          ARM
+        ------------------------------------------*/
 
-document.getElementById(
-"contactNumber"
-).value,
+        arm:
+        document.getElementById(
+            "arm"
+        ).value,
 
 
+        /*------------------------------------------
+          AUTOMATIC WEIGHT RANGE
+        ------------------------------------------*/
 
+        weightClass:
+        getWeightRange(category),
 
 
-address:
+        /*------------------------------------------
+          NO OLD RANKING SYSTEM
+        ------------------------------------------*/
 
-document.getElementById(
-"address"
-).value,
+        division:
+        "Super Tournament",
 
 
+        /*------------------------------------------
+          EMERGENCY CONTACT
+        ------------------------------------------*/
 
+        emergencyContactName:
+        document.getElementById(
+            "emergencyContactName"
+        ).value.trim(),
 
 
-category:
+        emergencyContactNumber:
+        document.getElementById(
+            "emergencyContactNumber"
+        ).value.trim(),
 
-document.getElementById(
-"category"
-).value,
 
+        /*------------------------------------------
+          NOTES
+        ------------------------------------------*/
 
+        notes:
+        document.getElementById(
+            "notes"
+        ).value.trim()
 
+    };
 
 
-arm:
 
-document.getElementById(
-"arm"
-).value,
+    /*==================================================
+     BASIC VALIDATION
+    ==================================================*/
 
+    if (!data.fullName) {
 
+        alert(
+            "Please enter your full name."
+        );
 
+        return;
 
+    }
 
 
-// AUTOMATIC RANKING DIVISION
+    if (!data.age) {
 
-division:
+        alert(
+            "Please enter your age."
+        );
 
-"Opening Rankings Battle (Rank #5 - Rank #10)",
+        return;
 
+    }
 
 
+    if (!data.birthDate) {
 
+        alert(
+            "Please enter your birth date."
+        );
 
+        return;
 
-weightClass:
+    }
 
-document.getElementById(
-"weightClass"
-).value,
 
+    if (!data.contactNumber) {
 
+        alert(
+            "Please enter your contact number."
+        );
 
+        return;
 
+    }
 
-emergencyContactName:
 
-document.getElementById(
-"emergencyContactName"
-).value,
 
+    /*==================================================
+     DISABLE BUTTON WHILE SUBMITTING
+    ==================================================*/
 
+    const submitButton =
+    document.querySelector(
+        "#registrationForm button[type='submit']"
+    );
 
 
+    if (submitButton) {
 
-emergencyContactNumber:
+        submitButton.disabled = true;
 
-document.getElementById(
-"emergencyContactNumber"
-).value,
+        submitButton.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> SUBMITTING...';
 
+    }
 
 
 
+    /*==================================================
+     SEND TO GOOGLE APPS SCRIPT
+    ==================================================*/
 
+    try {
 
-notes:
+        const response =
+        await fetch(
 
-document.getElementById(
-"notes"
-).value
+            REGISTRATION_API,
 
+            {
 
+                method:
+                "POST",
 
+                headers:
+                {
+                    "Content-Type":
+                    "text/plain;charset=utf-8"
+                },
 
+                body:
+                JSON.stringify(data)
 
-};
+            }
 
+        );
 
 
 
+        const result =
+        await response.json();
 
 
 
+        console.log(
+            "REGISTRATION:",
+            result
+        );
 
 
-try{
 
+        /*==================================================
+         SUCCESS
+        ==================================================*/
 
-const response =
+        if (result.success) {
 
-await fetch(
+            alert(
+                "Registration submitted successfully!\n\n" +
+                "Category: " +
+                data.category
+            );
 
-REGISTRATION_API,
 
-{
+            document
+            .getElementById(
+                "registrationForm"
+            )
+            .reset();
 
+        }
 
-method:"POST",
 
 
-headers:{
+        /*==================================================
+         ERROR FROM API
+        ==================================================*/
 
+        else {
 
-"Content-Type":
+            alert(
+                result.message ||
+                "Registration could not be completed."
+            );
 
-"text/plain;charset=utf-8"
+        }
 
+    }
 
-},
 
 
-body:
+    /*==================================================
+     NETWORK ERROR
+    ==================================================*/
 
-JSON.stringify(data)
+    catch (error) {
 
+        console.error(
+            "REGISTRATION ERROR:",
+            error
+        );
 
 
-}
+        alert(
+            "Unable to submit registration.\n\n" +
+            "Please check your internet connection and try again."
+        );
 
-);
+    }
 
 
 
+    /*==================================================
+     RESTORE BUTTON
+    ==================================================*/
 
+    finally {
 
+        if (submitButton) {
 
+            submitButton.disabled = false;
 
+            submitButton.innerHTML =
+            '<i class="fa-solid fa-paper-plane"></i> SUBMIT REGISTRATION';
 
-const result =
+        }
 
-await response.json();
-
-
-
-
-
-
-
-console.log(
-
-"REGISTRATION:",
-
-result
-
-);
-
-
-
-
-
-
-
-
-
-if(result.success){
-
-
-alert(
-
-"Registration Submitted Successfully!"
-
-);
-
-
-
-document
-
-.getElementById(
-
-"registrationForm"
-
-)
-
-.reset();
-
-
-
-}
-
-
-
-else{
-
-
-alert(
-
-result.message
-
-);
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-catch(error){
-
-
-
-console.error(
-
-"REGISTRATION ERROR:",
-
-error
-
-);
-
-
-
-alert(
-
-"Unable to submit registration"
-
-);
-
-
-
-}
-
-
+    }
 
 }

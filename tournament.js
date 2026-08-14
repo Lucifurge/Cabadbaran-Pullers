@@ -6,7 +6,7 @@
 
 
 const REGISTRATION_API =
-"https://script.google.com/macros/s/AKfycbzmr29Ua7kgDlCmq4AbdswujiouYh-YboS59AFsPhkB9PsCxnjKX9kmsIgQvZHYYXdG/exec";
+"https://script.google.com/macros/s/AKfycbxRcw5ZPjyRqLMy6INY6w-iGZOF2qaaw0m_mvBeLpgA-7HWmZ1r5_rtghmM38x4bVc/exec";
 
 
 
